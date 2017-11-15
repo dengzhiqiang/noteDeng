@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8-自动变偏移</title>
+    <style>
+
+
+        body {
+            background: #000;
+            padding-bottom: 500px;
+            color: deeppink;
+
+            /*为了确保所有元素的包含块为body ，设置body的position:relative;*/
+        }
+
+        p {
+            border: 10px solid green;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!--css权威指南325-->
+<body>
+
+<p>
+    When we consider the effect of positioning, it quickly becomes clear that authors
+    can do a great deal of damage to layout, just as they can do very interesting
+    things.
+    <span style="position: absolute; top: auto; left: 0;background: darkkhaki;">[4]</span>
+
+    This is usually the case with useful technologies: the sword always has
+    at least two edges, both of them sharp.
+</p>
+
+<p>
+    When we consider the effect of positioning, it quickly becomes clear that authors
+    can do a great deal of damage to layout, just as they can do very interesting
+    things.
+
+    <span style="position: absolute; top: auto; left: auto;background: darkkhaki;">[4]</span>
+
+    This is usually the case with useful technologies: the sword always has
+    at least two edges, both of them sharp.
+</p>
+<!--css权威指南326-->
+<!--前面两个absolute:的top：auto；是相当于，原来文本所在的位置，而不是0-->
+
+
+<p>
+    When we consider the effect of positioning, it quickly becomes clear that authors
+    can do a great deal of damage to layout, just as they can do very interesting
+    things.
+
+    <span style="position: absolute; top: auto; left: auto; right: 0;
+bottom: 0; height: 2em; width: 5em;background: darkkhaki;">[4]</span>
+
+    This is usually the case with
+    useful technologies: the sword always has at least two edges, both of them sharp.
+</p>
+
+
+</body>
+
+
+</body>
+</html>

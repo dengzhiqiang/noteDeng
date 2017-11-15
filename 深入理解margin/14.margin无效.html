@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>14.margin无效</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            color: #f00;
+            background: #000;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 600px;
+            border: 3px solid #00C;
+            overflow: hidden; /*这个超出隐藏的声明在IE6里不写也是可以的*/
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+</div>
+<script>
+    // inline元素竖直方向的margin无效
+    // display:table-cell display:table-row等声明无效
+    // margin-top:-100px;当负数到一定程度的时候，不在向上移动,因为内容元素的内容不会乱跑
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>absolute-设置元素的大小-max-width</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            padding-bottom: 500px;
+        }
+
+        #box1, #box2, #box3, #box4 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: darkcyan;
+            margin-top: 20px;
+        }
+
+        #box1 .inner1 {
+            position: absolute;
+            top: 10%;
+            bottom: 20%;
+            left: 50%;
+            right: 10%;
+
+            min-width: 50px;
+            min-height: 100px;
+            background: deeppink;
+            opacity: .4;
+        }
+
+        #box2 .inner2 {
+            position: absolute;
+            top: 10%;
+            bottom: auto;
+            left: 50%;
+            right: 10%;
+
+            min-width: 50px;
+            height: auto;
+            background: deeppink;
+            opacity: .4;
+        }
+
+        #box3 .inner3 {
+            position: absolute;
+            left: 0;
+            right: auto;
+            width: 50%;
+
+            max-width: 100px;
+            background: deeppink;
+            opacity: .4;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<!--css权威指南314页-->
+<div id="box1">
+    <div class="inner1"></div>
+</div>
+
+<div id="box2">
+    <div class="inner2"></div>
+</div>
+
+<div id="box3">
+    <div class="inner3">asdfasfsafsfsdfasfffffffffffffffffffffffff</div>
+</div>
+
+
+</body>
+</html>

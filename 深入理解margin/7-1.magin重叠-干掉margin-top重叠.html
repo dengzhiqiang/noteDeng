@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7-1.magin重叠-干掉margin-top重叠</title>
+</head>
+<body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background: #000;
+        color: deeppink;
+    }
+
+    .container {
+        width: 600px;
+        /*border: 1px solid #fff;*/
+        margin: 100px auto;
+        background: darkgray;
+    }
+
+    p {
+        background: darkorange;
+    }
+
+
+</style>
+<div class="container" style="overflow: hidden;">
+    <p style="margin-top:100px">第一个元素</p>
+</div>
+
+<div class="container" style="padding-top: 1px;">
+    <p style="margin-top:100px">第一个元素</p>
+</div>
+
+<div class="container" style="margin-top:100px;border-top:5px solid red;">
+    <p style="margin-top:100px">第一个元素</p>
+</div>
+
+<div class="container" style="margin-top:100px;">
+    &nbsp;
+    <p style="margin-top:100px">第一个元素</p>
+</div>
+
+
+<!--margin-bottom-->
+<div class="container" style="height:100px">
+    <p style="margin-bottom:100px">第一个元素</p>
+</div>
+<script>
+    //    (1)父元素，加overflow
+    //    (2)父元素加border-top
+    //    (3)父元素加padding-top
+    //    (4)父元素和第一个子元素之间有inline元素分隔
+
+    //    (5) margin-bottom也是类似的处理，但是多了一条：可以给父元素设置高度，也可以去掉重叠的margin-bottom
+</script>
+</body>
+</html>

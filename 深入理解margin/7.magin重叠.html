@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.magin重叠</title>
+</head>
+<body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background: #000;
+        color: deeppink;
+    }
+
+    .container {
+        width: 600px;
+        border: 1px solid #fff;
+        margin: 100px auto;
+    }
+
+</style>
+<div class="container">
+    <div class="box">
+        <img src="./2.png" style="width:80%;">
+    </div>
+</div>
+<script>
+    //    block水平元素，（不包括float和absolute元素）
+    //    只发生在margin-top margin-bottom
+
+    //    （1）相邻的 兄弟元素之间
+    //    （2）父级和第一个，最后一个子元素
+    //    （3）空的block 元素
+
+
+    //    margin重叠计算方式
+    //    (1) 正正 取正值大的
+    //    (2) 正负 正负
+    //    (3) 负负 取负值 绝对值最大的
+</script>
+</body>
+</html>

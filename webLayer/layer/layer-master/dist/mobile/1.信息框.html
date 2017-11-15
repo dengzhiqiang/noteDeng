@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.信息框</title>
+</head>
+<body>
+<script src="layer.js"></script>
+<script>
+    layer.open({
+        type:0,
+        title: '标题',
+        fixed: false,
+        top: 100,
+        content: '移动版和PC版不能同时存在同一页面',
+        btn: '我知道了',
+        style: 'background:pink;border:10px solid green;',
+        className: 'classDeng',
+//        skin: 'msg'
+        anim:'up'
+    });
+</script>
+</body>
+</html>

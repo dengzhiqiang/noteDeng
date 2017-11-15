@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webLayer</title>
+    <script src="./webLayer.js"></script>
+    <style>
+        body {
+            background: #000;
+            font-size: 18px;
+            color: deeppink;
+        }
+
+        .webLayer-m {
+            border: 5px solid darkturquoise;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    webLayer.open({
+        title: '我是标题！',
+        btn: '按钮!',
+    });
+    webLayer.open({
+        title: {
+            name: '我是标题name！'
+        },
+        btn: ['按钮1', '按钮2'],
+    });
+    webLayer.open({
+        title: {
+            name: '我是标题name！',
+            style: {
+                'border-bottom': '1px solid #fff',
+                'background': 'green'
+
+            }
+        },
+        btn: ['按钮1', '按钮2', '按钮3'],
+    });
+
+</script>
+</body>
+</html>

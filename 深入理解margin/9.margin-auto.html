@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9.margin-auto</title>
+</head>
+<body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background: #000;
+        color: deeppink;
+    }
+
+    .container {
+        width: 600px;
+        border: 1px solid #fff;
+        margin: 100px auto;
+        background: darkgray;
+    }
+
+    .box {
+        background: darkorange;
+        height: 60px;
+        width: 300px;
+    }
+
+
+</style>
+<div class="container">
+    <div class="box" style="margin-right:30px;"></div>
+</div>
+
+<div class="container">
+    <!--分配剩余的距离-->
+    <div class="box" style="margin-right:30px;margin-left:auto;"></div>
+</div>
+
+<div class="container">
+    <!--左右平分-->
+    <div class="box" style="margin-right:auto;margin-left:auto;"></div>
+</div>
+
+<!--================================================-->
+<!--================================================-->
+
+
+<script>
+    // auto 是为了自动分配剩余的空白区域的距离的
+    // 为什么图片，margin:0 auto ;不会居中，因为图片是inline元素，根本没有剩余空间，无法分配距离，只要设置display:block;即可
+
+//    为什么在垂直方向上，不会居中margin:auto; 因为在高度的方向上，block元素本身并不会自动，像宽度方向的距离自动100%；所以无效
+</script>
+</body>
+</html>

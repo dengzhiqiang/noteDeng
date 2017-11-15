@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-包含块和绝对定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            padding-bottom: 500px;
+            color: deeppink;
+
+            /*为了确保所有元素的包含块为body ，设置body的position:relative;*/
+            position: relative;
+
+        }
+
+        p {
+            margin: 2em;
+        }
+
+        p.contain {
+            position: relative;
+        }
+
+        /* establish a containing block*/
+        b {
+            position: absolute;
+            top: auto;
+            right: 0;
+            bottom: 0;
+            left: auto;
+            width: 8em;
+            height: 5em;
+            border: 5px solid deeppink;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--css权威指南322-->
+<body>
+<p>
+    This paragraph does <em>not</em> establish a containing block for any of its
+    descendant elements that are absolutely positioned. Therefore, the absolutely
+    positioned <b>boldface </b> element it contains will be positioned with
+    respect to the initial containing block.
+</p>
+<p class="contain">
+    Thanks to 'position: relative', this paragraph establishes a containing
+    block for any of its descendant elements that are absolutely positioned.
+    Since there is such an element-- <em>that is to say, <b>a boldfaced element
+    that is absolutely positioned,</b> placed with respect to its containing
+    block (the paragraph)</em>, it will appear within the element box generated
+    by the paragraph.
+</p>
+</body>
+
+
+</body>
+</html>

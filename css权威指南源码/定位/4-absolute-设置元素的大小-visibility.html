@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>absolute-设置元素的大小-visibility</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            padding-bottom: 500px;
+        }
+
+        #box1 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: darkcyan;
+            margin-top: 20px;
+
+            /*尽管这里设置了不可见，但是他的子元素如果设置了可见的话，子元素可见*/
+            visibility: hidden;
+        }
+
+        #box1 .inner1 {
+            position: absolute;
+            top: 10%;
+            bottom: 20%;
+            left: 50%;
+            right: 10%;
+
+            min-width: 50px;
+            min-height: 100px;
+            background: deeppink;
+            opacity: .4;
+
+            /*这里子元素可见*/
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+<!--css权威指南320页-->
+<!--visibility:hidden;display:none;区别-->
+<!--visibility:hidden；不可见，但是还是占据了位置-->
+<!--display:none;会从文档中删除，不在原来的位置上面-->
+<div id="box1">
+    <div class="inner1"></div>
+</div>
+
+
+</body>
+</html>

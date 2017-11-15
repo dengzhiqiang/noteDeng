@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.利用margin重叠</title>
+</head>
+<body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background: #000;
+        color: deeppink;
+    }
+
+    .container {
+        width: 600px;
+        border: 1px solid #fff;
+        margin: 100px auto;
+        background: darkgray;
+    }
+
+    li {
+        background: darkorange;
+        /*因为margin会重叠，但是下面也要margin，所以可以这么写*/
+        margin: 15px 0;
+    }
+
+
+</style>
+<div class="container">
+    <ul>
+        <li>利用margin重叠</li>
+        <li>利用margin重叠</li>
+        <li>利用margin重叠</li>
+        <li>利用margin重叠</li>
+        <li>利用margin重叠</li>
+    </ul>
+</div>
+
+<script>
+
+
+</script>
+</body>
+</html>

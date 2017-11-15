@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7-2.空block元素margin重叠</title>
+</head>
+<body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background: #000;
+        color: deeppink;
+    }
+
+    .container {
+        width: 600px;
+        /*border: 1px solid #fff;*/
+        margin: 100px auto;
+        background: darkgray;
+    }
+
+    p {
+        background: darkorange;
+    }
+
+
+</style>
+<div class="container">
+    <p style="margin-top:100px;margin-bottom:100px;"></p>
+</div>
+
+<!--解决方式-->
+<div class="container">
+    <p style="margin-top:100px;margin-bottom:100px;border: 5px solid deeppink;"></p>
+</div>
+<div class="container" style="padding-top:1px ;">
+    <p style="margin-top:100px;margin-bottom:100px;padding: 1px"></p>
+</div>
+
+<script>
+    // 当然这里container不能加border
+    // 发现三个效果都是一样的
+
+</script>
+</body>
+</html>

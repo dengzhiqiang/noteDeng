@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.margin百分比计算</title>
+</head>
+<body>
+
+<script>
+    // 适用于没有设定width 和height 的普通block元素(不包括float,absolute,fixed,table-cell元素)
+    // 只适用于水平方向的尺寸
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background: #000;
+        color: deeppink;
+    }
+
+    .container {
+        width: 600px;
+        border: 1px solid #fff;
+        margin: 100px auto;
+    }
+    img{
+        height:100px;
+    }
+</style>
+<div class="container">
+    <div class="box">
+        <img src="./2.png" style="width:80%;">
+    </div>
+</div>
+
+<div class="container">
+    <div class="box" style="position: relative;">
+        <div style="width:1000px;">
+            变成了480
+            <img src="./2.png" style="position: absolute;width:80%;">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="box" style="position: absolute;">
+        <div style="width:1000px;">
+            变成了800
+            <img src="./2.png" style="position: absolute;width:80%;">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="box" style="position: fixed;">
+        <div style="width:1000px;">
+            变成了800
+            <img src="./2.png" style="position: absolute;width:80%;">
+        </div>
+    </div>
+</div>
+<script>
+    //   margin是相对width来计算百分数的值的
+    //   绝对定位元素的百分比margin {position:absolute}，相对的是第一个定位祖先元素（relative,absolute,fixed）的宽度值来计算
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9-非替换元素的放置和大小</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+
+
+        body {
+            background: #000;
+            padding-bottom: 500px;
+            color: deeppink;
+
+            /*为了确保所有元素的包含块为body ，设置body的position:relative;*/
+        }
+
+
+    </style>
+</head>
+<body>
+
+<body>
+
+<!--css权威指南328-->
+<!--前面两个absolute:的top：auto；是相当于，原来文本所在的位置，而不是0-->
+
+
+<div style="position: relative; width: 200px; border: 10px dotted deeppink;">
+    An absolutely positioned element can have its content
+
+    <!--width: auto;元素的内容刚好能够包含元素的内容-->
+    <span style="position: absolute; top: 0; left: 0; right: auto; width: auto;
+  background: silver;">shrink-wrapped</span>
+
+    thanks to the way positioning rules work.
+</div>
+<br>
+<br>
+<br>
+
+<div style="position: relative;width: 200px; border: 10px dotted deeppink;">
+    An absolutely positioned element can have its content
+    <span style="position: absolute; top: 0; left: 10px; right: 10px; width: 50px;
+  margin: 0 auto; background: silver;">shrink-wrapped</span>
+    thanks to the way positioning rules work.
+</div>
+
+<br>
+<br>
+<!--如果不设置margin:0 auto;定位元素会忽略right-->
+<div style="position: relative;width: 200px; border: 10px dotted deeppink;">
+    An absolutely positioned element can have its content
+    <span style="position: absolute; top: 0; left: 10px; right: 10px; width: 50px;
+ background: silver;">shrink-wrapped</span>
+    thanks to the way positioning rules work.
+</div>
+
+<br>
+<br>
+<div style="position: relative; width: 25em; border: 1px dotted;">
+    An absolutely positioned element can have its content
+    <span style="position: absolute; top: 0; left: 1em; right: 1em; width: 10em;
+  margin-left: 1em; margin-right: 1em; background: silver;">shrink-wrapped</span>
+    thanks to the way positioning rules work.
+</div>
+</body>
+
+
+</body>
+</html>

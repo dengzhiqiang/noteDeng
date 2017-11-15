@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>absolute-偏移属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+        }
+
+        #box1, #box2, #box3, #box4 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: darkcyan;
+            margin-top: 20px;
+        }
+
+        #box1 .inner1 {
+            position: absolute;
+            top: 50%;
+            bottom: 0;
+            left: 50%;
+            right: 0;
+            background: deeppink;
+        }
+
+        #box2 .inner2 {
+            position: absolute;
+            top: 50%;
+            bottom: 0;
+            left: 50%;
+            right: 0;
+            background: deeppink;
+            margin: 10px;
+        }
+
+        #box3 .inner3 {
+            position: absolute;
+            top: 60%;
+            bottom: 10%;
+            left: 60%;
+            right: 10%;
+            background: deeppink;
+        }
+
+        #box4 .inner4 {
+            position: absolute;
+            top: -10%;
+            bottom: -10%;
+            left: 60%;
+            right: -10%;
+            background: deeppink;
+            opacity: .5;
+        }
+    </style>
+</head>
+<body>
+
+<!--css权威指南310页-->
+<div id="box1">
+    <div class="inner1"></div>
+</div>
+
+<div id="box2">
+    <div class="inner2"></div>
+</div>
+
+<div id="box3">
+    <div class="inner3"></div>
+</div>
+
+<div id="box4">
+    <div class="inner4"></div>
+</div>
+
+</body>
+</html>

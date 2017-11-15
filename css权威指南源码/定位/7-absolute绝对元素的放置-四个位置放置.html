@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7-absolute绝对元素的放置-四个位置放置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            padding-bottom: 500px;
+            color: deeppink;
+
+            /*为了确保所有元素的包含块为body ，设置body的position:relative;*/
+            position: relative;
+
+        }
+
+        #box, #box2, #box3, #box4 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            border: 10px solid darkcyan;
+        }
+
+        #box h1 {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            bottom: 10%;
+            left: 10%;
+            background: darkmagenta;
+            overflow: hidden;
+        }
+
+        #box2 h1 {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            bottom: 10%;
+            left: 10%;
+            background: darkmagenta;
+            overflow: hidden;
+
+            /*显示的设置宽度和高度*/
+            width: 50px;
+            height: 50px;
+        }
+
+        #box3 h1 {
+            position: absolute;
+            top: auto;
+            left: auto;
+
+            background: darkmagenta;
+            overflow: hidden;
+        }
+
+        #box4 h1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background: darkmagenta;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<!--css权威指南325-->
+<body>
+
+<div id="box">
+    <h1>我是四个方向定位的元素! </h1>
+</div>
+
+<div id="box2">
+    <h1>我是四个方向定位的元素! + 宽度</h1>
+</div>
+
+<div id="box3">
+    <h1> top: auto;
+        left: auto;</h1>
+</div>
+
+<div id="box4">
+    <h1> top: 0;
+        left: 0;</h1>
+</div>
+
+
+</body>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>text插件的使用方法</title>
+</head>
+<body>
+<pre>
+    <!--资源请求方式-->
+require(["some/module", "text!some/module.html", "text!some/module.css"],
+    function(module, html, css) {
+        //the html variable will be the text
+        //of the some/module.html file
+        //the css variable will be the text
+        //of the some/module.css file.
+    }
+);
+
+    <!--只要body中的内容-->
+require(["text!some/module.html!strip"],
+    function(html) {
+        //the html variable will be the text of the
+        //some/module.html file, but only the part
+        //inside the body tag.
+    }
+);
+
+</pre>
+</body>
+</html>

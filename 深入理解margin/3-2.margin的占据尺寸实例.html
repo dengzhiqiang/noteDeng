@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3-2.margin的占据尺寸实例</title>
+</head>
+<body>
+
+<script>
+    // 适用于没有设定width 和height 的普通block元素(不包括float,absolute,fixed,table-cell元素)
+    // 只适用于水平方向的尺寸
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        background: #000;
+        color: deeppink;
+    }
+
+    .container {
+        width: 600px;
+        height:200px;
+        overflow-y: scroll;
+        border: 1px solid #fff;
+        margin: 100px auto;
+    }
+
+    p {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<div class="container">
+    <!--滚动容器内上下留白-->
+    <div class="box" style="padding: 100px;">
+        <img src="./2.png" alt="" width="100" height="100">
+    </div>
+</div>
+<div class="container">
+    <!--滚动容器内上下留白-->
+    <div class="box">
+        <img style="margin:100px;" src="./2.png" alt="" width="100" height="100">
+    </div>
+</div>
+<script>
+    // (1) padding 留白的方式 现代浏览器二者并没有发现什么区别，有人说padding的方式，无法实现
+    // (2) margin 留白的方式
+
+
+</script>
+</body>
+</html>

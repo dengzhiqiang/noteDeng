@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0-包含块到底是是什么</title>
+    <style>
+        body{
+            background: #000;
+            color:deeppink;
+        }
+    </style>
+</head>
+<body>
+<!--css权威指南308-->
+<!--(1) 一般来说根元素是包含块，有些浏览器是html，有些事body，大都数的浏览器的初始包含块是视窗大小的矩形-->
+<!--(2) 对于非根元素，如果position的值是relative或者static 包含块是最近的块级元素，表格单元，行内块祖先框的内容边界构成-->
+<!--(3)以下主要举例其他的，详细包含块看书-->
+
+<!--块级元素的包含块，内边界作为区域设置left top的值-->---
+<div class="box" style="position: relative;border: 50px solid darkorange;padding: 50px;">
+    <div style="position: absolute;top:0;width:50px;height:30px;background: darkkhaki;"></div>
+</div>
+
+</body>
+</html>

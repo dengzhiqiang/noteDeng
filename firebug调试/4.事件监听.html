@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>5.事件监听</title>
+	<style>
+		body{
+
+			background: #000;
+			font-size: 20px;
+			color:deeppink;
+		}
+	</style>
+</head>
+<body>
+	
+	<button id="btn">button</button>
+	<script>
+	// 在event listener breakpoints面板找到 mousev--》click事件，所有的click事件都会暂停下来
+	// 然后点击button按钮，就能找到当前元素绑定的函数
+		document.querySelector('#btn').addEventListener('click',function(){
+			console.log(this);
+		});
+
+	</script>
+</body>
+</html>

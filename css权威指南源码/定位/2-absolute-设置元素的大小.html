@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>absolute-设置元素的大小</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            padding-bottom: 500px;
+        }
+
+        #box1, #box2, #box3, #box4 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: darkcyan;
+            margin-top: 20px;
+        }
+
+        #box1 .inner1 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 50%;
+            background: deeppink;
+            opacity: .4;
+        }
+
+        /*inner1 和 inner2大部分是相同的就只是增加了宽度和高度*/
+        #box2 .inner2 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 50%;
+
+            width: 50%;
+            height: 100%;
+            background: deeppink;
+            opacity: .4;
+        }
+
+        #box3 .inner3 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 50%;
+
+            width: 50%;
+            height: 100%;
+            padding: 10px; /*这里就只是多了padding*/
+            background: deeppink;
+            opacity: .4;
+        }
+
+        #box4 .inner4 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 50%;
+
+            padding: 10px; /*这里就只是多了padding*/
+            background: deeppink;
+            opacity: .4;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<!--css权威指南312页-->
+<div id="box1">
+    <div class="inner1"></div>
+</div>
+
+<div id="box2">
+    <div class="inner2"></div>
+</div>
+
+<div id="box3">
+    <div class="inner3"></div>
+</div>
+
+<div id="box4">
+    <div class="inner4"></div>
+</div>
+
+
+</body>
+</html>
