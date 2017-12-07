@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="x-ua-compatible" content="IE=9">
+    <link href="css/main.css" type="text/css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <title>touchSwipe</title>
+</head>
+<body>
+<div class="container">
+
+    <script id='code_1'>
+        $(function () {
+            //Enable swiping...
+            $("#test").swipe({
+                //Generic swipe handler for all directions
+                swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                    $(this).text("滑动方向: " + direction + '滑动距离：' + distance);
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                threshold: 0
+            });
+        });
+    </script>
+
+    <span class='title'></span>
+    <h4>events: <span
+            class='events'><code>swipe</code>,<code>swipeLeft</code>, <code>swipeRight</code>, <code>swipeUp</code>, <code>swipeDown</code></span>
+    </h4>
+    <p>By using the <code>swipe</code> handler, you can detect all 4 directions, or use the individual methods <code>swipeLeft</code>,
+        <code>swipeRight</code>, <code>swipeUp</code>, <code>swipeDown</code></p>
+
+    <button class='btn btn-small btn-info example_btn'>Jump to Example</button>
+    <pre class="prettyprint" data-src='code_1'></pre>
+    <span class='navigation'></span>
+
+    <div id="test" class="box">Swipe me</div>
+
+    <span class='navigation'></span>
+</div>
+</body>
+</html>
