@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件测试！</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box {
+            height: 50%;
+            background: darkcyan;
+            border-bottom: 5px solid deeppink;
+        }
+
+        .box:nth-child(2n+1) {
+            background: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+<div class="box ondragstart">hammer.ondragstart = function(ev) { }; // 开始拖动</div>
+<div class="box ondrag">hammer.ondrag = function(ev) { }; // 拖动中</div>
+<div class="box ondragend">hammer.ondragend = function(ev) { }; // 拖动结束</div>
+<div class="box onswipe">hammer.onswipe = function(ev) { }; // 滑动</div>
+
+<div class="box ontap" id="ontap">hammer.ontap = function(ev) { }; // 单击</div>
+<div class="box ondoubletap">hammer.ondoubletap = function(ev) { }; //双击</div>
+<div class="box onhold">hammer.onhold = function(ev) { }; // 长按</div>
+
+
+<div class="box ontransformstart">hammer.ontransformstart = function(ev) { }; // 双指收张开始</div>
+<div class="box ontransform">hammer.ontransform = function(ev) { }; // 双指收张中</div>
+<div class="box ontransformend">hammer.ontransformend = function(ev) { }; // 双指收张结束</div>
+<div class="box onrelease">hammer.onrelease = function(ev) { }; // 手指离开屏幕</div>
+<script>
+    //    // 先要对监听的DOM进行一些初始化
+    //    var hammer = new Hammer(document.getElementById("container"));
+    //
+    //    // 然后加入相应的回调函数即可
+    //    hammer.ondragstart = function(ev) { };  // 开始拖动
+    //    hammer.ondrag = function(ev) { }; // 拖动中
+    //    hammer.ondragend = function(ev) { }; // 拖动结束
+    //    hammer.onswipe = function(ev) { }; // 滑动
+    //
+    //    hammer.ontap = function(ev) { }; // 单击
+    //    hammer.ondoubletap = function(ev) { }; //双击
+    //    hammer.onhold = function(ev) { }; // 长按
+    //
+    //    hammer.ontransformstart = function(ev) { }; // 双指收张开始
+    //    hammer.ontransform = function(ev) { }; // 双指收张中
+    //    hammer.ontransformend = function(ev) { }; // 双指收张结束
+    //
+    //    hammer.onrelease = function(ev) { }; // 手指离开屏幕
+
+</script>
+<script src="hammer.js"></script>
+<script>
+    // hammerJs-v2.0.4详解
+    // http://blog.csdn.net/kongjiea/article/details/43016085
+    var ontap = new Hammer(document.getElementById('ontap'));
+    ontap.on('tap', function (e) {
+        alert('ontap!');
+    });
+
+</script>
+
+
+</body>
+</html>

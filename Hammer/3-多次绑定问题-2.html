@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-多次绑定问题-2</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box {
+            height: 20%;
+            background: darkcyan;
+            border-bottom: 5px solid deeppink;
+        }
+
+        .box:nth-child(2n+1) {
+            background: darkmagenta;
+        }
+
+        #btn {
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="btn">点我会增加多次的绑定事件!</button>
+<div class="box ontap">hammer.ontap = function(ev) { }; // 单击</div>
+<div class="box ontap">hammer.ontap = function(ev) { }; // 单击</div>
+<div class="box ontap">hammer.ontap = function(ev) { }; // 单击</div>
+<div class="box ontap">hammer.ontap = function(ev) { }; // 单击</div>
+<div class="box ontap">hammer.ontap = function(ev) { }; // 单击</div>
+
+
+<script src="hammer.js"></script>
+<script>
+    /*下面这种方法也无法解决，多次绑定问题*/
+    function random() {
+        console.log(Math.random());
+    }
+    function test() {
+        var ontap = document.getElementsByClassName('ontap');
+
+        var _this = null;
+        for (var i = 0, len = ontap.length; i < len; i++) {
+            (function () {
+                _this = ontap[i];
+                new Hammer(_this).on('tap', random);
+            })(i);
+        }
+    }
+    test();
+    document.getElementById('btn').onclick = function () {
+        test();
+    }
+
+
+</script>
+
+
+</body>
+</html>
