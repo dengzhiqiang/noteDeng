@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transitionend</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        background: #000;
+    }
+
+    button {
+        width: 60%;
+        height: 30px;
+        background: deeppink;
+        margin: 30px auto;
+    }
+
+    #slidingMenu {
+        width: 100px;
+        height: 100px;
+        background: deeppink;
+        transition: height 2s linear, background 3s linear;
+    }
+
+    #slidingMenu.transition {
+        height: 400px;
+        background: darkorange;
+    }
+</style>
+<button class="btn">点我看效果！</button>
+<div id="slidingMenu">
+
+</div>
+
+<script>
+    // https://developer.mozilla.org/zh-CN/docs/Web/Events/transitionend
+
+    // transitionend 事件会在 CSS transition 结束后触发.
+    // 当transition完成前移除transition时，比如移除css的transition-property 属性，事件将不会被触发.
+    // 如在transition完成前设置  display 为"none"，事件同样不会被触发。
+
+
+    //    [1] 在 Chrome 1.0, Android 2.1 与 WebKit 3.2 上实现 webkitTransitionEnd.
+    //    Chrome 36 与 WebKit 7.0.6 上请使用标准事件 transitionend.
+    //
+    //   [2] 在 Opera 10.5 上实现oTransitionEnd，从版本12开始实现 otransitionend，
+    //   从版本12.10开始实现 transitionend.
+
+    //    接口
+    //    TransitionEvent
+    //    是否冒泡: 是
+    //    能否取消默认行为:是
+    //    目标:document, element
+    //    默认行为:无
+
+
+    document.querySelector('.btn').onclick = function () {
+        var i = 1;
+        var timer = null;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            if (i >= 6) clearInterval(timer);
+            i++;
+            console.log(i);
+        }, 1000);
+        var classList = document.getElementById("slidingMenu").classList;
+        if (!classList.contains('transition')) {
+            classList.add('transition');
+        } else {
+            classList.remove('transition');
+        }
+    };
+
+
+    /*
+     * 在指定的元素上监听transitionend事件, 例如#slidingMenu
+     * 然后指定一个函数, 例如 showMessage()
+     */
+    function showMessage() {
+        console.log('Transition 已完成');
+    }
+
+    var element = document.getElementById("slidingMenu");
+    element.addEventListener("transitionend", showMessage, false);
+
+
+</script>
+</body>
+</html>
