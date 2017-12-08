@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>touch拖拽-手机拖拽</title>
+    <style>
+        body {
+            background: #000;
+        }
+
+        .div {
+            text-align: center;
+            font-size: 30px;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="div">1</div>
+
+
+<script>
+    var divd = $(".div"),
+        startX = 0, // 开始触摸的坐标点
+        startY = 0, // 开始触摸的坐标点
+        posX = 0, // left 初始的定位位置
+        posY = 0; // top 初始的定位位置
+
+
+    divd.each(function (index) {
+        $(this).on('touchstart', function (evt) {
+            var e = event || evt;
+
+            // 阻止其他事件
+            e.preventDefault();
+            var touch = e.targetTouches[0];
+
+            startX = touch.pageX;
+            startY = touch.pageY;
+
+            posX = parseInt(window.getComputedStyle(this, null).left);
+            posY = parseInt(window.getComputedStyle(this, null).top);
+
+
+        }).on('touchmove', function (evt) {
+
+            var e = event || evt;
+            e.preventDefault();//阻止其他事件
+
+            // 如果这个元素的位置内只有一个手指的话
+            //console.log(e.targetTouches)
+            //console.log(event.targetTouches[0].clientX+"/"+event.targetTouches[0].clientY+"/"+event.targetTouches[0].pageX+"/"+event.targetTouches[0].pageY)
+            if (e.targetTouches.length >= 1) {
+                var touch = e.targetTouches[0];
+                // 把元素放在手指所在的位置
+                var nowX = touch.pageX,
+                    nowY = touch.pageY;
+
+
+                console.log(nowX - startX);
+                console.log(nowY - startY);
+
+                $(this).css("left", (nowX - startX + posX));
+                $(this).css("top", (nowY - startY + posY));
+            }
+        }).on('touchend', function (evt) {
+            var e = event || evt;
+            e.preventDefault();//阻止其他事件
+        })
+    });
+</script>
+</body>
+</html>
