@@ -1,9 +1,26 @@
 // 自定义函数的
+// 函数使用方式================================
 .scale(@val:1) {
     transform: scale(@val);
 }
+.scale {
+    // 调用函数
+    .scale();
+}
 
+
+// 函数使用方式================================
 .transition(@property:all,@duration:1s,@time-function:linear,@delay:1s) {
     transition: @arguments;
 }
 
+
+.transition {
+    // 调用函数使用默认值
+    .transition();
+}
+
+.transition-param {
+    // 调用函数添加值
+    .transition(@property:width);
+}

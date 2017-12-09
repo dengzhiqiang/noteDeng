@@ -1,6 +1,17 @@
 body {
   background: #000;
 }
+.box {
+  width: 100px;
+  color: #000;
+  background: url("../images/test.png");
+}
+.box:after {
+  content: '邓志强';
+}
+.box:before {
+  content: '邓志强';
+}
 .scale {
   transform: scale(1);
 }
@@ -9,4 +20,23 @@ body {
 }
 .transition-param {
   transition: width 1s linear 1s;
+}
+.red {
+  color: red;
+}
+.yellow,
+#blue {
+  background: yellow;
+  color: blue;
+}
+.mixin-class {
+  color: red;
+  background: yellow;
+  color: blue;
+}
+.mixin-class2 {
+  color: red;
+}
+.mixin-id {
+  color: pink;
 }

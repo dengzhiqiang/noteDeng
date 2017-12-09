@@ -1,0 +1,12 @@
+// 作用域是块级作用域
+
+@color: red;
+
+.box {
+    @color: green;
+
+    &:after {
+        content: '';
+        color: @color;
+    }
+}

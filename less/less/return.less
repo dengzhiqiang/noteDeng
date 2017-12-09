@@ -1,0 +1,10 @@
+.public(@x,@y) {
+    // 这里不用加return
+    @result: (@x+@y)/2;
+}
+
+.box {
+    // 必须要写这个，下面才能使用@result
+    .public(6, 4);
+    width: unit(@result, px);
+}

@@ -1,0 +1,16 @@
+.public {
+    width: 100px;
+
+    .inner {
+        width: 50px;
+    }
+}
+
+.box {
+    .public;
+}
+
+.box {
+    // 混合中的所有属性都会加上关键字!important
+    .public !important;
+}

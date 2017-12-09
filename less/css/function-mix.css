@@ -1,0 +1,19 @@
+.red {
+  color: red;
+}
+.yellow,
+#blue {
+  background: yellow;
+  color: blue;
+}
+.mixin-class {
+  color: red;
+  background: yellow;
+  color: blue;
+}
+.mixin-class2 {
+  color: red;
+}
+.mixin-id {
+  color: pink;
+}

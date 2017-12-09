@@ -1,5 +1,58 @@
 // 变量定义的
+// 变量使用方式
+@white: #fff;
+@black: #000;
 
-@white:#fff;
-@black:#000;
+body {
+    background: @black;
+}
+
+@link-color-hover: red;
+@link-color: #000;
+
+// 存储选择器变量
+@selector: box;
+@img-url: '../images/';
+@property: color;
+@name: '邓志强';
+@namename: name;
+
+// 此时的selector是上面的box的值
+// 一般来说，后面不是分好的时候，就好加上大括号
+.@{selector} {
+    width: 100px;
+        @{property}: #000;
+    background: url("@{img-url}test.png");
+
+    &:after {
+        content: @name;
+    }
+    &:before {
+        // 变量的变量调用方式
+        content: @@namename;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

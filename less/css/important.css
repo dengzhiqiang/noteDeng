@@ -1,0 +1,18 @@
+.public {
+  width: 100px;
+}
+.public .inner {
+  width: 50px;
+}
+.box {
+  width: 100px;
+}
+.box .inner {
+  width: 50px;
+}
+.box {
+  width: 100px !important;
+}
+.box .inner {
+  width: 50px !important;
+}

@@ -1,0 +1,14 @@
+body {
+  background: #000;
+}
+.box {
+  width: 100px;
+  color: #000;
+  background: url("../images/test.png");
+}
+.box:after {
+  content: '邓志强';
+}
+.box:before {
+  content: '邓志强';
+}
