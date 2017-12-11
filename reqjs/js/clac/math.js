@@ -5,6 +5,6 @@ define('math',function(math){
 		add:function(a,b){
 			return a + b;					
 		}
-	}		
+	};
 	return math;
 });

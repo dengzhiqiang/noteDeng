@@ -60,6 +60,9 @@
     //    目标:document, element
     //    默认行为:无
 
+    // 如果 transition 中：变换的属性有多个 ；
+    // 比如设置宽高 过度（transition :width:.2s,height:.2s）, transitionend  事件会促发2次
+
 
     document.querySelector('.btn').onclick = function () {
         var i = 1;
@@ -88,7 +91,25 @@
     }
 
     var element = document.getElementById("slidingMenu");
-    element.addEventListener("transitionend", showMessage, false);
+
+
+    function whichTransitionEvent() {
+        var transitions = {
+            'transition': 'transitionend',
+            'OTransition': 'oTransitionEnd',
+            'MozTransition': 'transitionend',
+            'WebkitTransition': 'webkitTransitionEnd'
+        }
+
+        for (var t in transitions) {
+            if (document.body.style[t] !== undefined) {
+                return transitions[t];
+            }
+        }
+    }
+
+    var transitionEvent = whichTransitionEvent();
+    element.addEventListener(transitionEvent, showMessage, false);
 
 
 </script>
