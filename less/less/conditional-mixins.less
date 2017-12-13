@@ -1,0 +1,16 @@
+// 条件混合器
+.public(@x) when (@x>10) and (@x<20) {
+    background: green;
+}
+
+.public(@x) when (@x>100) and (@x<200) {
+    background: red;
+}
+
+.mix {
+    .public(12);
+}
+
+.mix2 {
+    .public(112);
+}

@@ -1,0 +1,19 @@
+// 条件混合器
+
+// 逗号表示或者的关系
+.public(@x) when (@x>10), (@x<20) {
+    background: green;
+}
+
+// 在100到200之间
+.public(@x) when (@x>100) and (@x<200) {
+    background: red;
+}
+
+.mix {
+    .public(5);
+}
+
+.mix2 {
+    .public(2000);
+}
