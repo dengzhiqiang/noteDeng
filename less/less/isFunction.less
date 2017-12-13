@@ -6,7 +6,6 @@
 //iskeyword
 //isurl
 
-
 //If you want to check if a value is in a specific unit in addition to being a number, you may use one of:
 
 //ispixel
@@ -14,15 +13,17 @@
 //isem
 //isunit
 
-.public(@x) when(isnumber(@x)){
-    width:100px;
+.public(@x) when (isnumber(@x)) {
+    width: 100px;
 }
 
-.public(@x) when(iscolor(@x)){
+.public(@x) when (iscolor(@x)) {
     background: @x;
 }
 
+.box {
+    .public(10);
+    .public(red);
+}
 
 
-cp -rf  /www/web/mall_witaa_com/public_html/images/*  /www/web/muheshop/public_html/images/
-cp -rf /www/web/mall_witaa_com/public_html/bdimages/upload1  /www/web/muheshop/public_html/bdimages/upload1

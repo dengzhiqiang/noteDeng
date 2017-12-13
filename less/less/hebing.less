@@ -1,0 +1,21 @@
+// 合并属性
+// merge 特性能够聚合多个属性从而形成一个用逗号分隔的单一属性。
+// merge 对于像 background 和 transform 这类属性非常有用。
+// +  用逗号分隔属性
+// +_ 用空格分割属性
+
+.mixin() {
+    box-shadow+: inset 0 0 10px #555;
+}
+
+.myclass {
+    .mixin();
+    box-shadow+: 0 0 20px black;
+}
+
+
+// 为了避免意外的合并，merge 需要在每个需要合并的属性名后面添加一个 + 以作标示。
+// 生成
+//.myclass {
+//    box-shadow: inset 0 0 10px #555, 0 0 20px black;
+//}

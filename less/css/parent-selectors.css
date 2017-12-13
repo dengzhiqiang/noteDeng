@@ -1,0 +1,15 @@
+a {
+  color: blue;
+}
+a:hover {
+  color: green;
+}
+.button-ok {
+  background-image: url("ok.png");
+}
+.button-cancel {
+  background-image: url("cancel.png");
+}
+.button-custom {
+  background-image: url("custom.png");
+}

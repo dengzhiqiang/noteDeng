@@ -1,0 +1,13 @@
+.mixin() {
+    transform+_: scale(2);
+}
+.myclass {
+    .mixin();
+    transform+_: rotate(15deg);
+}
+
+
+// 下面的这个使用空格分割属性的
+//.myclass {
+//    transform: scale(2) rotate(15deg);
+//}
