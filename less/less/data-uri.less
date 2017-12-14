@@ -1,0 +1,22 @@
+// 图片格式转化成base64格式的
+//图片的base64编码就是可以将一副图片数据编码成一串字符串，使用该字符串代替图像地址。
+//这样做有什么意义呢？我们知道，我们所看到的网页上的每一个图片，
+//都是需要消耗一个http请求下载而来的（所有才有了csssprites技术的应运而生，
+//但是csssprites有自身的局限性，下文会提到）。
+
+//没错，不管如何，图片的下载始终都要向服务器发出请求，要是图片的下载不用向服务器发出请求，
+//而可以随着 HTML 的下载同时下载到本地那就太好了，而base64正好能解决这个问题。
+
+//在css里的写法
+//#fkbx-spch, #fkbx-hspch {
+//    background: url(data:image/gif;base64,R0lGODlhHAAmAKIHAKqqqsvLy0hISObm5vf394uLiwAAAP///yH5B…EoqQqJKAIBaQOVKHAXr3t7txgBjboSvB8EpLoFZywOAo3LFE5lYs/QW9LT1TRk1V7S2xYJADs=) no-repeat center;
+//}
+
+//在html中的写法
+//<img src="data:image/gif;base64,R0lGODlhHAAmAKIHAKqqqsvLy0hISObm5vf394uLiwAAAP///yH5B…EoqQqJKAIBaQOVKHAXr3t7txgBjboSvB8EpLoFZywOAo3LFE5lYs/QW9LT1TRk1V7S2xYJADs=">
+
+.data-uri {
+    background: data-uri('../img/zhidao.png') no-repeat center top;
+}
+
+

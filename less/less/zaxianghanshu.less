@@ -1,0 +1,87 @@
+// 杂项函数
+
+/*color*/
+//解析颜色，将代表颜色的字符串转换为颜色值.
+//参数： string: 代表颜色值的字符串。
+//返回值： color
+//案例： color("#aaa");
+//输出： #aaa
+.color {
+    color: color(red);
+}
+
+/*convert*/
+//将数字从一种单位转换到另一种单位。
+//第一个参数为带单位的数值，第二个参数为单位。如果两个参数的单位是兼容的，则数字的单位被转换。如果两个参数的单位不兼容，则原样返回第一个参数。
+
+//参见 unit 不做转换的情况下改变单位
+//兼容的单位是:
+//
+//长度： m, cm, mm, in, pt and pc,
+//时间： s and ms,
+//角度： rad, deg, grad and turn.
+//参数：
+//number: 带单位浮点数。
+//identifier, string or escaped value: units
+//返回值： number
+.convert {
+    transition: all convert(9s, "ms") linear;
+    height: convert(14cm, mm);
+    min-height: convert(8, mm); // incompatible unit types
+}
+
+/*data-uri*/
+//将资源内联进样式表，如果开启了 ieCompat 选项并且资源太大，或者此函数的运行环境为浏览器，
+// 则会回退到直接使用 url() 。如果没有指定 MIME，则 node 将使用 mime 包来决定正确的 mime 类型。
+//参数：
+//mimetype: (可选) MIME 字符串。
+//            url: 需要内嵌的文件的 URL 。
+//            案例： data-uri('../data/image.jpg');
+//输出： url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');
+//
+//浏览器端输出： url('../data/image.jpg');
+//
+//案例： data-uri('image/jpeg;base64', '../data/image.jpg');
+//
+//输出： url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');
+
+/*unit*/
+
+//删除或更换单位。
+//参数：
+//
+//dimension: 带单位或不带单位的数字。
+//unit: (可选) 目标单位，如果省略此参数，则删除单位。
+//See convert for changing the unit without conversion.
+//
+//案例： unit(5, px)
+//输出： 5px
+//
+//案例： unit(5em)
+//输出： 5
+
+.unit {
+    width: unit(10, px);
+    height: unit(10, rem);
+    min-width: unit(10, %);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

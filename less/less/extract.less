@@ -1,0 +1,19 @@
+/*extract*/
+
+//返回列表中指定位置的元素。
+//参数： list - 逗号或空格分隔的元素列表。 index - 指定列表中元素位置的数字。
+//返回值：列表中指定位置的元素。
+//
+//案例： extract(8px dotted red, 2); 输出： dotted
+//
+//案例：
+//@list: apple, pear, coconut, orange;
+//value: extract(@list, 3);
+//输出： value: coconut;
+
+@color: red green blue;
+
+.extract {
+    color: extract(@color, 2); // 获取第二个
+    background: extract(@color, length(@color)); // 获取最后一个
+}
