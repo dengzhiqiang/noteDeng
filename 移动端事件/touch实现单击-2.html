@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>touch实现单击</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    var body = document.body;
+
+    body.addEventListener('touchstart', function (e) {
+        // e
+        // e:TouchEvent==>type,target,preventDefault,stopPropagation,changeTouches ,touches
+        // e.touches或者e.changeTouches 这里面存的是手指的集合，而我们要获取的是手指的坐标
+        // e.touches[0]：表示第一根手指
+        // e.touches[0].clienX;
+        // e.touches[0].clientY;
+        // e.touches[0]：手指需要在屏幕上
+        // 如果需要获取手指离开时的坐标，只能使用changedTouches来获取
+
+        var point = e.touches[0];
+        this.clientX = point.clientX;
+        this.clientY = point.clientY;
+
+        // 判断是否移动,每次操作之前先设置为false
+        this.isMove = false;
+
+
+    });
+    body.addEventListener('touchmove', function (e) {
+        var point = e.touches[0],
+            newClientX = point.clientX,
+            newClientY = point.clientY;
+
+        // 判断是否滑动 如果移动的距离大于30px则表示在移动
+        if (Math.abs(this.clientX - newClientX) > 30 || Math.abs(this.clientY - newClientY) > 30) {
+            this.isMove = true;
+        }
+    });
+
+
+    body.addEventListener('touchend', function (e) {
+        // 如果移动了
+        if (this.isMove) {
+            body.innerHTML = '滑动了！';
+            body.style.background = 'red';
+        } else {
+            body.innerHTML = '没有滑动！';
+            body.style.background = 'blue';
+        }
+    });
+
+</script>
+
+</body>
+</html>

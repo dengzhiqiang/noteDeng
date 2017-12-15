@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>touch实现单击</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    var body = document.body;
+    body.addEventListener('touchstart', function (e) {
+        // e
+        // e:TouchEvent==>type,target,preventDefault,stopPropagation,changeTouches ,touches
+        // e.touches或者e.changeTouches 这里面存的是手指的集合，而我们要获取的是手指的坐标
+        // e.touches[0]：表示第一根手指
+        // e.touches[0].clienX;
+        // e.touches[0].clientY;
+        // e.touches[0]：手指需要在屏幕上
+        // 如果需要获取手指离开时的坐标，只能使用changedTouches来获取
+
+        console.log(e.touches[0].clientX);
+
+    });
+    body.addEventListener('touchmove', function (e) {
+
+    });
+    body.addEventListener('touchend', function (e) {
+        // 获取手指离开的时候的坐标
+        console.log(e.changedTouches[0].clientX);
+    });
+
+</script>
+
+</body>
+</html>

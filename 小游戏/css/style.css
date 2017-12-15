@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+body {
+    font-size: 14px;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.color-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+
+}
+
+/*分为七种色球*/
+.color-green1 {
+    background: #0AF810;
+    box-shadow: 0 0 30px 10px #0AF810;
+    animation: greenColor linear 1.5s 1s infinite;
+}
+
+@keyframes greenColor {
+    0% {
+        box-shadow: 0 0 30px 10px #0AF810;
+    }
+
+    50% {
+        box-shadow: 0 0 0 0 #0AF810;
+    }
+
+    100% {
+        box-shadow: 0 0 30px 10px #0AF810;
+    }
+}
+
+.color-yellow1 {
+    background: #F5FA5D;
+    box-shadow: 0 0 30px 10px #F5FA5D;
+    animation: yellowColor linear 1.5s 1s infinite;
+}
+
+@keyframes yellowColor {
+    0% {
+        box-shadow: 0 0 30px 10px #F5FA5D;
+    }
+
+    50% {
+        box-shadow: 0 0 0 0 #F5FA5D;
+    }
+
+    100% {
+        box-shadow: 0 0 30px 10px #F5FA5D;
+    }
+}
+
+.color-zise1 {
+    background: #D843F0;
+    box-shadow: 0 0 30px 10px #D843F0;
+    animation: ziseColor linear 1.5s 1s infinite;
+
+}
+
+@keyframes ziseColor {
+    0% {
+        box-shadow: 0 0 30px 10px #D843F0;
+    }
+
+    50% {
+        box-shadow: 0 0 0 0 #D843F0;
+    }
+
+    100% {
+        box-shadow: 0 0 30px 10px #D843F0;
+    }
+}
+
+.color-blue1 {
+    background: #4BFFFF;
+    box-shadow: 0 0 30px 10px #4BFFFF;
+    animation: blueColor linear 1.5s 1s infinite;
+
+}
+
+@keyframes blueColor {
+    0% {
+        box-shadow: 0 0 30px 10px #4BFFFF;
+    }
+
+    50% {
+        box-shadow: 0 0 0 0 #4BFFFF;
+    }
+
+    100% {
+        box-shadow: 0 0 30px 10px #4BFFFF;
+    }
+}
+
+
+
