@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高度不固定的垂直居中</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #vc {
+            /*表格*/
+            display: table;
+            background-color: #C2300B;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #vci {
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+            /*表格框*/
+            display: table-cell;
+            text-align: center;
+        }
+
+        #content {
+            /*表格框内容*/
+            display: inline-block;
+            width: 80%;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="vc">
+    <div id="vci">
+        <div id="content">
+            我们垂直居中了，我们水平居中了
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.cl {
+    clear: both;
+}
+
+.cl:after {
+    display: table;
+    content: " ";
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    vertical-align: top;
+}
+.wrapper{
+    overflow: hidden;
+}
+.wrapper img {
+    width: 100%;
+}
+
+.list {
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
