@@ -13,3 +13,12 @@
 ### 滚动加载    
     在这里获取接口，来做实验
     http://www1.qdfuns.com/feres.php
+
+### 最近要看的源码
+    http://shop.ectouch.cn/v2/data/assets/js/jquery.more.js     加载更多
+    http://www.jq22.com/demo/mousewhellDemo20151203/jquery.mousewheel.js  鼠标滚动
+    http://www.jq22.com/jquery-info15574    jquery数量加减
+    http://www.jq22.com/jquery-info6625     上下滑动加载刷新插件iscroll.js
+        http://www.jq22.com/yanshi6625  演示
+    http://www.jq22.com/jquery-info9516    jQuery下拉框插件jquery.select.js    
+        
