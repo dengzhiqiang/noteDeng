@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.9 按块执行JavaScript代码</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<script>
+    //    由于JavaScript是按块执行的，所以如果在一个JavaScript块中调用后面块中声明的变量或函数就会提示语法错误。
+    //    例如，当JavaScript解释器执行下面代码时就会提示语法错误，显示变量a未定义，对象f找不到
+
+    //    虽然说，JavaScript是按块执行的，但是不同块都属于同一个全局作用域，也就是说，块之间的变量和函数是可以共享的。
+    // JavaScript代码块1
+    f();
+    console.log(a);
+
+</script>
+<body>
+<script>
+    // JavaScript代码块2
+    var a = 1;
+
+    function f() {
+        console.log(1);
+    }
+</script>
+</body>
+</html>

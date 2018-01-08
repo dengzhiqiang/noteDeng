@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.2 按HTML文档流顺序执行JavaScript代码</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //    如果通过脚本标签<script>的src属性导入外部JavaScript文件脚本，
+    //    那么它也将按照其语句出现的顺序来执行，而且执行过程是文档装载的一部分。
+    //    不会因为是外部JavaScript文件而延期执行。
+    //    例如，把上面文档中的头部和主体区域的脚本移到外部JavaScript文件中，然后通过src属性导入。
+    //    继续预览页面文档，你会看到相同的执行顺序。
+</script>
+<script>
+    console.log(1);
+</script>
+
+
+<script>
+    console.log(2)
+</script>
+
+<script src="a.js"></script>
+
+<script>
+    console.log(3)
+</script>
+<script src="b.js"></script>
+</body>
+</html>

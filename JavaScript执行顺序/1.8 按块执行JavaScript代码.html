@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.8 按块执行JavaScript代码</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<script>
+//    JavaScript解释器在执行脚本时，是按块来执行的。
+//    通俗地说，就是浏览器在解析HTML文档流时，如果遇到一个<script>标签
+//    ，则JavaScript解释器会等到这个代码块都加载完后，先对代码块进行预编译，然后再执行。
+//    执行完毕后，浏览器会继续解析下面的HTML文档流，同时JavaScript解释器也准备好处理下一个代码块。
+
+    // JavaScript代码块1
+    var a = 1;
+</script>
+<script>
+    // JavaScript代码块2
+    function f() {
+        console.log(1);
+    }
+</script>
+</body>
+</html>

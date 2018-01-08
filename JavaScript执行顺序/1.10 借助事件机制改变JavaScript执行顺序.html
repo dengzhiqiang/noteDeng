@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.10 借助事件机制改变JavaScript执行顺序</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //    由于JavaScript是按块处理代码，同时又遵循HTML文档流的解析顺序，所以在上面示例中会看到这样的语法错误。
+    //    但是当文档流加载完毕，如果再次访问就不会出现这样的错误。
+    //    例如，把访问第2块代码中的变量和函数的代码放在页面初始化事件函数中，就不会出现语法错误了
+    // JavaScript代码块1
+    window.onload = function () {        // 页面初始化事件处理函数
+        alert(a);
+        f();
+    }
+</script>
+<script>
+    // JavaScript代码块2
+    var a = 1;
+
+    function f() {
+        alert(1);
+    }
+</script>
+</body>
+</html>

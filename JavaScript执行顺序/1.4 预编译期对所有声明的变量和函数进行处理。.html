@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.4 预编译期对所有声明的变量和函数进行处理。</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //    当JavaScript引擎解析脚本时，它会在预编译期对所有声明的变量和函数进行处理。
+    //做如下处理：
+    //1. 在执行前会进行类似“预编译”的操作：首先会创建一个当前执行环境下的活动对象，并将那些用var申明的变量设置为活动对象的属性，但是此时这些变量的赋值都是undefined，并将那些以function定义的函数也添加为活动对象的属性，而且它们的值正是函数的定义。
+    //2. 在解释执行阶段，遇到变量需要解析时，会首先从当前执行环境的活动对象中查找，如果没有找到而且该执行环境的拥有者有prototype属性时则会从prototype链中查找，否则将会按照作用域链查找。遇到var a = ...这样的语句时会给相应的变量进行赋值
+
+    // （注意：变量的赋值是在解释执行阶段完成的，如果在这之前使用变量，它的值会是undefined） 所以，就会出现当JavaScript解释器执行下面脚本时不会报错：
+</script>
+<script>
+    console.log(a);                            // 返回值undefined
+    var a = 1;
+    console.log(a);                            // 返回值1
+
+//    由于变量声明是在预编译期被处理的，所以在执行期间对于所有代码来说，都是可见的。
+//    但是，你也会看到，执行上面代码，提示的值是undefined，而不是1。
+//    这是因为，变量初始化过程发生在执行期，而不是预编译期。
+
+//    在执行期，JavaScript解释器是按着代码先后顺序进行解析的，
+//    如果在前面代码行中没有为变量赋值，则JavaScript解释器会使用默认值undefined。
+//    由于在第二行中为变量a赋值了，所以在第三行代码中会提示变量a的值为1，而不是undefined
+</script>
+</body>
+</html>

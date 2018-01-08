@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.3 预编译与执行顺序的关系</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //    我们会看到这样的结果：连续输出了两次Hello World。
+    //而非我们想象中的Hello和Hello World。
+    //这是因为Javascript并非完全的按顺序解释执行，
+    //    而是在解释之前会对Javascript进行一次“预编译”，在预编译的过程中，会把定义式的函数优先执行，
+    //    也会把所有var变量创建，默认值为undefined，以提高程序的执行效率。
+</script>
+<script>
+    function hello() {
+        console.log("hello");
+    }
+
+    hello();
+
+    function hello() {
+        console.log("hello World");
+    }
+
+    hello();
+
+    // 这里最后输出的都是 hello World
+</script>
+<script>
+    // 上面代码块，等价下面的代码块
+    // script分别为各自的代码块，程序被分成了两段，JS引擎也就不会把他们放到一起了。
+    var hello = function () {
+        console.log("hello");
+    };
+
+    hello = function () {
+        console.log("hello World!!!!");
+    };
+
+    hello();
+    hello();
+</script>
+</body>
+</html>

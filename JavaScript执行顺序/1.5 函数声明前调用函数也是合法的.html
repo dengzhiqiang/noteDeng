@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.5 函数声明前调用函数也是合法的。</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+</script>
+<script>
+    f();                                 // 调用函数，返回值1
+    function f() {
+        console.log(1);
+    }
+</script>
+
+<script>
+    ff();                                 // 调用函数，返回语法错误
+    var ff = function(){
+        console.log('ff');
+    }
+
+//    这是因为，上面示例中定义的函数仅作为值赋值给变量f，所以在预编译期，
+//    JavaScript解释器只能够为声明变量f进行处理，而对于变量f的值，只能等到执行期时按顺序进行赋值，
+//    自然就会出现语法错误，提示找不到对象f。
+</script>
+</body>
+</html>
