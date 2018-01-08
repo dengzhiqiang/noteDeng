@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.JS预编译实例</title>
+</head>
+<body>
+<script>
+    var a = 1;// 变量声明
+    function b(y) {//函数声明
+        var x = 1;
+        console.log('so easy');
+    }
+
+    var c = function () {//是变量声明而不是函数声明！！
+        //...
+    };
+    b(100);
+</script>
+<script>
+    var d = 0;
+</script>
+
+<script>
+    //    让我们看看引擎对这段代码做了什么吧
+    //
+    //    页面产生便创建了GO全局对象（Global Object）（也就是大家熟悉的window对象）
+    //      第一个脚本文件加载
+    //    脚本加载完毕后，分析语法是否合法
+
+    //    开始预编译
+    //    查找变量声明，作为GO属性，值赋予undefined
+    //    查找函数声明，作为GO属性，值赋予函数体
+    //伪代码
+
+    /* GO/window = {
+         //页面加载创建GO同时，创建了document、navigator、screen等等属性，此处省略
+         a: undefined,
+         c: undefined，
+     b: function(y){
+         var x = 1;
+         console.log('so easy');
+         }
+     }*/
+</script>
+
+<script>
+    //    解释执行代码（直到执行函数b）
+    //伪代码
+    /*GO/window = {
+        //变量随着执行流得到初始化
+        a: 1,
+        c: function(){
+            //...
+        },
+        b: function(y){
+            var x = 1;
+            console.log('so easy');
+        }
+    }*/
+
+</script>
+
+<script>
+    //    执行函数b之前，发生预编译
+    //    创建AO活动对象（Active Object）
+    //查找形参和变量声明，值赋予undefined
+    //    实参值赋给形参
+    //    查找函数声明，值赋予函数体
+
+    //伪代码
+    /*AO = {
+        //创建AO同时，创建了arguments等等属性，此处省略
+        y: 100,
+        x: undefined
+    }*/
+
+    //预编译阶段发生变量声明和函数声明，没有初始化行为（赋值），匿名函数不参与预编译
+    //只有在解释执行阶段才会进行变量初始化
+</script>
+
+<script>
+    //    预编译(函数执行前)※
+    //1. 创建AO对象（Active Object）
+    //2. 查找函数形参及函数内变量声明，形参名及变量名作为AO对象的属性，值为undefined
+    //    3. 实参形参相统一，实参值赋给形参
+    //    4. 查找函数声明，函数名作为AO对象的属性，值为函数引用
+    //
+    //    预编译(脚本代码块script执行前)
+    //    1. 查找全局变量声明（包括隐式全局变量声明，省略var声明），变量名作全局对象的属性，值为undefined
+    //    3. 查找函数声明，函数名作为全局对象的属性，值为函数引用
+</script>
+</body>
+</html>
