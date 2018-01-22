@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>11-2.正则元字符</title>
+    <style>
+        body {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //  一个\d代表一个字符，也就是一个位置，代表数量的是* ? +
+    var reg = /\d/;  // 包含一个0-9之间的数字
+    var reg = /^\d$/;// 只能是一个数字
+    console.log(reg.test(0315)); // false
+    console.log(reg.test('asdf12')); // false
+    console.log(reg.test('1')); // true
+    //（1） 元字符：
+    // 每一个正则表达式，都是由元字符和修饰符组成的
+    // 元字符是在//之间具有意义的字符
+
+    // 具有特殊意义的元字符
+    // \ 转移字符，转义后面字符所代表的含义
+    //    ^ 以某一个元字符开始
+    //    $以某一个元字符结尾
+    //    \n匹配一个换行符
+    //    . 除了换行符以外的任意字符
+    console.log('===============代表出现次数的量词==============');
+    var reg = /^0.2$/; // 以0开头，以2结尾，中间可以使除了\n的任意字符
+    console.log(reg.test('0.2')); // true
+    console.log(reg.test('0-2')); // true
+    var reg = /^0\.2$/; // 以0开头，以2结尾，中间是一个小数点
+    console.log(reg.test('0.2')); // true
+    console.log(reg.test('0-2')); // false
+
+    // （2）代表出现次数的量词，元字符
+    //    * 出现0到多次
+    //    + 出现一到多次
+    //    ？出现零次或者一次
+    //    {n} 出现n次
+    //    {n,} 出现n次到多次
+    //    {n,m} 出现n次到m次
+
+</script>
+
+
+</body>
+</html>

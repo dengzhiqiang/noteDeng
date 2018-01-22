@@ -1,0 +1,13 @@
+github.com/jquery-validation/jquery-validation  github
+jqueryvalidation.org  官网
+
+
+### Installation via Package Managers
+
+Bower: bower install jquery-validation
+NuGet: Install-Package jQuery.Validation
+NPM: npm i jquery-validation
+
+
+中文使用手册
+http://www.cnblogs.com/hejunrex/archive/2011/11/17/2252193.html

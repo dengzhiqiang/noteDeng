@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2-Object.create实现类式继承-call理解</title>
+    <style>
+        body {
+            background: #000;
+            font-size: 18px;
+            color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function _super() {
+        this.superName = 'superName!'
+    }
+
+    function Person(name) {    //父类
+        this.name = name;
+        this.SayHello = function () {
+            console.log("Hello, I'm " + this.name);
+        };
+    }
+
+    Person.prototype = new _super();
+    Person.prototype.constructor = Person;
+
+    function Employee(name, salary) {   //子类
+        Person.call(this, name);       //将this传给父构造函数
+        this.salary = salary;
+        this.ShowMeTheMoney = function () {
+            console.log(this.name + " $" + this.salary);
+        };
+    }
+
+    var BillGates = new Person("Bill Gates");
+    var SteveJobs = new Employee("Steve Jobs", 1234);
+
+    console.log(BillGates.superName);
+
+    BillGates.SayHello();  //显示：I'm Bill Gates
+    SteveJobs.SayHello();  //显示：I'm Steve Jobs
+    SteveJobs.ShowMeTheMoney();  //显示：Steve Jobs $1234
+
+    console.log(BillGates.constructor == Person);   //true
+    console.log(SteveJobs.constructor == Employee); //true
+
+
+</script>
+
+
+</body>
+</html>

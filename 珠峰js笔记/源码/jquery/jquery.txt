@@ -1,0 +1,20 @@
+https://code.jquery.com/jquery-1.12.4.js
+
+http://jquery.com/browser-support/    浏览器支持情况
+If you need to support older browsers like Internet Explorer 6-8, Opera 12.1x or Safari 5.1+, use jQuery 1.12.
+
+
+下面是 Jquery2.0 版本的一些特性：
+　　1、不兼容 IE6/7/8
+　　需要注意 IE9、IE10 的兼容模式仍然会使 jQuery 2.0 运行不正常，需要在 HTTP header 指定 X-UA-Compatible 属性，或者在页面 meta 标签中声明（性能原因，不推荐后者）；
+　　2、体积更小
+　　移除 IE6/7/8 兼容所需的代码，jQuery 2.0 体积减小了 10%，并且会根据 Android 2.x 版本的份额，移除更多兼容性代码，所以不要指望 jQuery 2.0 对旧设备的兼容性。
+　　3、可自定义包含的功能模块
+　　通过配置应用所需的功能函数，可编译获取指定功能模块的代码版本，更大幅度减小文件体积。
+　　4. 兼容 1.9 版本的 API
+　　如果你的网站应用已经在使用 jQuery 1.9 版本，那就可以直接平滑迁移到 2.0 ，建议使用 jQuery Migrate 插件调试确认。
+
+
+
+
+

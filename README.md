@@ -19,6 +19,41 @@
     http://www.jq22.com/demo/mousewhellDemo20151203/jquery.mousewheel.js  鼠标滚动
     http://www.jq22.com/jquery-info15574    jquery数量加减
     http://www.jq22.com/jquery-info6625     上下滑动加载刷新插件iscroll.js
-        http://www.jq22.com/yanshi6625  演示
-    http://www.jq22.com/jquery-info9516    jQuery下拉框插件jquery.select.js    
-        
+        http://www.jq22.com/yanshi6625      演示
+    http://www.jq22.com/jquery-info9516     jQuery下拉框插件jquery.select.js    
+
+### 《高性能JavaScript》        
+    主要讲述JavaScript的性能问题，非常值得推荐的书籍
+
+### 《你不知道的JavaScript》
+    很重要
+
+### labjs
+    https://blog.oldj.net/2010/12/24/labjs-study/    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

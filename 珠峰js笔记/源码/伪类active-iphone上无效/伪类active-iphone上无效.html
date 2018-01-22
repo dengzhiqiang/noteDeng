@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪类active-iphone上无效</title>
+</head>
+<body>
+<style>
+    /*添加完上述代码后，在安卓上，都可以看到想要的效果，但是iphone上依旧无动于衷。。。。。*/
+    /*怎么办？*/
+    /*经过查资料和实际测试后，发现，:active  需要一个触发事件才可以，于是乎，用以下代码：*/
+    span:active {
+        box-shadow: inset 0 5px 10px #B41313, inset 0 -5px 10px #B41313;
+    }
+</style>
+
+
+[javascript] view plain copy
+<script type="text/javascript">
+    document.body.addEventListener('touchstart', function () {
+    });
+    // 在页面上给一个监听事件，就可以触发:active，就可以兼容iphone上点击按下时的效果了！！！
+</script>
+
+
+</body>
+</html>

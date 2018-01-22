@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>data</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        html, body {
+            background: #000;
+            color: deeppink;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"
+     data-cdeng="邓"
+     data-e-name="邓---"
+     data-myName="邓------------"
+     data-delete="邓------------">
+    测试在元素上存储一个key-value
+</div>
+<script>
+    var div = document.getElementsByTagName('div')[0];
+    console.log(div.dataset.cdeng);  // 都是小写的
+    console.log(div.dataset.eName); // 多个下划线的
+    console.log(div.dataset.myname); // 有大写和小写的，都要变成小写
+    div.dataset.haizeiwang = '海贼王'; // 添加属性
+
+
+    console.log(div.dataset);
+    //    删除属性
+    delete div.dataset.delete;
+    console.log(div.dataset);
+
+//    在获取自定义属性的值时，使用dataset属性，然后通过自定义属性(这时去掉data-前缀)的名称去获取值。dataset是JS5规范中新增加的属性，用于和data-*配合使用。
+//    通过each打印的结果，我们需要注意：
+//    1，如果data-后面包含了“-”，例如 date-e-name，"-"会去掉，并转换成为骆驼峰式的命名 eName。这是因为JSON Object 的key不能包含”-“。
+//    2，如果data-后面的单词有大写，例如 myName，将会转存成小写 myname。这里就不理解为什么会转换成小写了，JSON Object的key是区分大小写的。求高人指定？？
+//    3，如果你想删除一个data-*属性，请使用 delete dataset.cname或者dataset.cname=null;
+//
+//    data-*属性看起来很好，但是不幸的是只有在Chrome 8+ Firefox(Gecko) 6.0+ Internet Explorer 11+ Opera 11.10+ Safari 6+的浏览器中实现了此标准。如果你的脚步需要兼容各主流浏览器的不同版本建议还是使用原生的getAttribute()或jQuery中的.attr()。
+</script>
+</body>
+</html>

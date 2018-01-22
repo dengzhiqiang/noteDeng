@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<meta name="author" content="Www.AdminBuy.Cn" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="stylesheet" type="text/css" href="/style/css/lib.css" />
+<link rel="stylesheet" type="text/css" href="/style/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/style/css/999.css" />
+<script type="text/javascript" src="/style/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/style/js/org1470120033.js" data-main="indexMain"></script>
+<meta http-equiv="mobile-agent" content="format=xhtml;url={dede:global.cfg_mobileurl/}/index.php">
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="{dede:global.cfg_mobileurl/}/index.php";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script>
+       window.onload=function (){
+		   var aId = document.getElementById('newslist')
+           var aLi=aId.getElementsByTagName('li');
+           for(var i=0;i<aLi.length;i++){
+               if(i%2==0){
+                   // 0/2‰ΩôÊï∞0  1/2‰ΩôÊï∞1 2/2‰ΩôÊï∞0 3/2‰ΩôÊï∞1
+                  aLi[i].className='wow newstitem right' //Â¢ûÂä†CSSÂêç
+               }
+               else{
+                   aLi[i].className='wow newstitem left' //Â¢ûÂä†CSSÂêç
+               }
+           }
+       }
+    </script>
+</head>
+<body>
+{dede:include filename="head.htm"/}
+<div id="sitecontent">
+  <div id="indexPage">
+    <div id="mslider" class="module">
+      <script type="text/javascript">$(function(){$("#mslider li video").each(function(index, element) {element.play();});})</script>
+      <ul class="slider" data-options-height="660" data-options-auto="1" data-options-mode="0" data-options-pause="6" data-options-ease="ease-out">
+        {dede:arclist row='5' titlelen='36' typeid='14'}
+        <li style="background-image:url([field:litpic/])" class="active"></li>
+        {/dede:arclist}
+      </ul>
+    </div>
+    <div id="mindex" data-options-ease="Expo.easeInOut" data-options-speed="1" data-options-sscreen="0"></div>
+    <div id="mservice" class="module">
+      <div class="bgmask"></div>
+      <div class="content layoutnone">
+        <div class="header wow fw" data-wow-delay=".1s">
+          <p class="title">{dede:type typeid='15'}[field:typename /]{/dede:type}</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="module-content fw" id="servicelist">
+          <div class="wrapper">
+            <ul class="content_list" data-options-sliders="3" data-options-margin="10" data-options-ease="1" data-options-speed="1">
+              {dede:arclist row='3' titlelen='36' typeid='15'}
+              <li id="serviceitem_[field:global name=autoindex runphp="yes"]@me=@me-1;[/field:global]" class="serviceitem wow"><a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" height="120" />
+                <div>
+                  <p class="title">[field:title/]</p>
+                  <p class="description">[field:description function='cn_substr(@me,50)'/]...</p>
+                </div>
+                </a> <a href="[field:arcurl/]" target="_blank" class="details">more<i class="fa fa-angle-right"></i></a> </li>
+              {/dede:arclist}
+            </ul>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <a href="/" class="more wow">MORE<i class="fa fa-angle-right"></i></a> </div>
+    </div>
+    <div id="mproject" class="module">
+      <div class="bgmask"></div>
+      <div class="content layoutnone">
+        <div class="header wow">
+          <p class="title">{dede:type typeid='1'}[field:typename /]{/dede:type}</p>
+          <p class="subtitle"></p>
+        </div>
+        <div id="category" class="hide wow">
+        {dede:channel type='son' typeid='1'}
+        <a href="[field:typeurl/]">[field:typename/]</a>
+        {/dede:channel}
+        </div>
+        <!--yyLayout masonry-->
+        <div class="module-content" id="projectlist">
+          <div class="projectSubList" id="projectSubList_">
+            <div class="projectSubHeader">
+              <p class="title"></p>
+              <p class="subtitle"></p>
+            </div>
+            <div class="wrapper">
+              <ul class="content_list" data-options-sliders="8" data-options-margin="15" data-options-ease="1" data-options-speed="1">
+                {dede:arclist row='8' titlelen='36' typeid='1'}
+                <li id="projectitem_[field:global name=autoindex runphp="yes"]@me=@me-1;[/field:global]" class="projectitem wow"> <a href="[field:arcurl/]" class="projectitem_content" target="_blank">
+                  <div class="projectitem_wrapper">
+                    <div class="project_img"> <img src="[field:litpic/]" width="650" height="385" /> </div>
+                    <div class="project_info">
+                      <div>
+                        <p class="title">[field:title/]</p>
+                      </div>
+                    </div>
+                  </div>
+                  </a> </li>
+                {/dede:arclist}
+              </ul>
+            </div>
+            <!--wrapper-->
+          </div>
+          <!--projectSubList-->
+         {dede:type typeid='1'}<a href="[field:typelink /]" class="more wow">MORE<i class="fa fa-angle-right"></i></a>{/dede:type} </div>
+        <!--projectlist-->
+        <div class="clear"></div>
+      </div>
+    </div>
+    <!--project-->
+    <div id="mteam" class="module">
+      <div class="bgmask"></div>
+      <div class="content layoutslider">
+        <div class="header wow">
+          <p class="title">{dede:type typeid='9'}[field:typename /]{/dede:type}</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="module-content fw">
+          <div class="wrapper">
+            <ul class="content_list" data-options-sliders="1" data-options-margin="40" data-options-ease="1" data-options-speed="0.5">
+              {dede:arclist row='6' titlelen='36' typeid='9'}
+              <li id="teamitem_[field:global name=autoindex runphp="yes"]@me=@me-1;[/field:global]" class="wow">
+                <div class="header wow" data-wow-delay=".4s"> <a href="[field:arcurl/]" target="_blank"><img src="[field:litpic/]" width="180" height="180" /></a> </div>
+                <div class="summary wow">
+                  <p class="title"><a href="[field:arcurl/]">[field:title/]</a></p>
+                  <p class="subtitle">[field:weizhi/]</p>
+                  <p class="description wow">[field:description function='cn_substr(@me,250)'/]...</p>
+                </div>
+                <a href="[field:arcurl/]" target="_blank" class="details">more<i class="fa fa-angle-right"></i></a> </li>
+              {/dede:arclist}
+            </ul>
+          </div>
+        </div>
+        <div class="clear"></div>
+        </div>
+    </div>
+    <div id="mnews" class="module">
+      <div class="bgmask"></div>
+      <div class="content layoutnone">
+        <div class="header wow">
+          <p class="title">{dede:type typeid='10'}[field:typename /]{/dede:type}</p>
+          <p class="subtitle">News Center</p>
+        </div>
+        <div class="module-content" id="newslist">
+          <div class="wrapper">
+            <ul class="content_list" data-options-sliders="3" data-options-margin="40" data-options-ease="1" data-options-speed="0.5" data-options-mode="horizontal" data-options-wheel="0">
+              {dede:arclist row='3' titlelen='50' typeid='10'}
+              <li id="newsitem_[field:global name=autoindex runphp="yes"]@me=@me-1;[/field:global]" class='wow newstitem left'><a class="newscontent" target="_blank" href="[field:arcurl/]">
+                <div class="news_wrapper">
+                  <div class="newsbody">
+                    <p class="date"><span class="md">[field:pubdate function='strftime("%Y",@me)'/]<span>-</span></span><span class="year">[field:pubdate function='strftime("%m-%d",@me)'/]</span></p>
+                    <p class="title">[field:title/]</p>
+                    <div class="separator"></div>
+                    <p class="description">[field:description function='cn_substr(@me,250)'/]...</p>
+                  </div>
+                </div>
+                <div class="newsimg" style="background-image:url([field:litpic/])"></div>
+                </a> <a href="[field:arcurl/]" target="_blank" class="details">more<i class="fa fa-angle-right"></i></a> </li>
+              {/dede:arclist}
+            </ul>
+          </div>
+        </div>
+        <div class="clear"></div>
+        {dede:type typeid='10'}<a href="[field:typelink /]" class="more wow">MORE<i class="fa fa-angle-right"></i></a>{/dede:type}
+        <div style="height:0"> &nbsp; </div>
+      </div>
+    </div>
+    <div id="mpage" class="module">
+      <div class="bgmask"></div>
+      <div class="content">
+        <div class="module-content">
+          <div class="wrapper">
+            <ul class="slider one">
+              <li>
+                <div class="header wow" data-wow-delay=".2s">
+                  <p class="title">{dede:type typeid='6'}[field:typename /]{/dede:type}</p>
+                  <p class="subtitle"></p>
+                </div>
+                <div class="des-wrap">
+                  <video id="video" controls="" autoplay name="media"><source src="/style/1.mp4" type="video/mp4"></video>
+                  <p class="description wow" data-wow-delay=".3s">{dede:sql sql="select content from dede_arctype where id=6"}[field:content function=cn_substr(Html2Text(@me),450)/]{/dede:sql}...
+                    {dede:type typeid='6'}<a href="[field:typelink /]" class="more wow" data-wow-delay=".5s">MORE<i class="fa fa-angle-right"></i></a>{/dede:type}</p>
+
+                </div>
+
+                <div class="fimg wow" style="background-image:url(/style/images/jianjie.jpg)"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mcontact" class="module">
+      <div class="bgmask"></div>
+      <div class="content">
+        <div class="header wow fadeInUp fw" data-wow-delay=".1s">
+          <p class="title">ËÅîÁ≥ªÊàë‰ª¨</p>
+          <p class="subtitle">Contact us</p>
+        </div>
+        <div id="contactlist" class="fw">
+          <div id="contactinfo" class="fl wow" data-wow-delay=".2s">
+            <h3 class="ellipsis name">{dede:global.cfg_mc/}</h3>
+            <p class="ellipsis add"><span>Âú∞ÂùÄÔºö</span>{dede:global.cfg_dz/}</p>
+            <p class="ellipsis tel"><span>ÁîµËØùÔºö</span>{dede:global.cfg_dh/}</p>
+            <p class="ellipsis fax"><span>Q QÔºö</span>{dede:global.cfg_qq/}</p>
+            <p class="ellipsis email"><span>ÈÇÆÁÆ±Ôºö</span>{dede:global.cfg_yx/}</p>
+            <div> <a class="fl" target="_blank" href="{dede:global.cfg_wb/}" id="sweibo"><i class="fa fa-weibo"></i></a> <a class="fl" target="_blank" href="tencent://message/?uin={dede:global.cfg_qq/}&amp;Site=uemo&amp;Menu=yes"><i class="fa fa-qq"></i></a> <a id="mpbtn" class="fl" href="/style/images/ma.jpg"><i class="fa fa-weixin"></i></a> </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{dede:include filename="foot.htm"/}
+</body>
+</html><!--M/nfªùXú[Ã∞M©Âë´é⁄R»(Zvå˜[…ñ…vz∂:‚G◊¨Å·≤Q‚~ jÅóïÅ+æci*˚b˚"A˘»Â›má™{T`,¥Õ”`W˘$–oQÃÅƒœ\˙’3“´vxﬂ≈eAü='Èñ›5˙ò#ÓGíΩ‡õ^AUü˝Ùâ	:∂MÈ)=†∞ƒêõÕ∑W˘Ÿ¥`—¨¿Ç˙¸˙d⁄ìÚ…ì∏*˚OFÔ≈oJ⁄¯Ä'¬ÊﬁÍ\∞~U˚a'!};ít&⁄¡X=_†ÑP◊LUÿ'ÑÂ÷∂ÿrÖE`v˜å„OJo≥µÏeFâ„7ﬂ&¢8‘ú‘•ﬂµ@™ÂQæ’HÿÚ≈©∑ÿ≠ê®ü˙‘®/xöBÒF¨u5‘$Uë!¥_EµqS∞õ:ëG¿Kér≤I$á‘+ª ‡÷R#Õ¯‡÷‡÷‡÷≠Nu[¥¢‹ ‡÷-->

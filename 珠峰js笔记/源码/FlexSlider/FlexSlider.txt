@@ -1,0 +1,3 @@
+https://github.com/woocommerce/FlexSlider/tree/master/demo
+
+http://flexslider.woothemes.com/video.html 官网

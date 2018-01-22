@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>11-10.match</title>
+    <style>
+        body {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //    match
+    //    match 是 String 对象的一个方法。
+    var str = "1a1b1c";
+    var reg = new RegExp("1.", "");
+    console.log(str.match(reg));
+
+
+    //    match 这个方法有点像 exec，但：exec 是 RegExp 对象的方法；math 是 String 对象的方法。二者还有一个不同点，就是对参数 g 的解释。
+    //如果指定了参数 g，那么 match 一次返回所有的结果。
+    var str = "1a1b1c";
+    var reg = new RegExp("1.", "g");
+    console.log(str.match(reg));
+    //alert(str.match(reg)); // 此句同上句的结果是一样的
+    //    此结果为一个数组，有三个元素，分别是：1a、1b、1c。
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

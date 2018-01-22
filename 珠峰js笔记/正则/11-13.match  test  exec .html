@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>11-13.match test exec </title>
+    <style>
+        body {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+    /* match*/
+
+    var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    var regexp = /[A-E]/gi;
+    var rs = str.match(regexp);
+    console.log(rs);
+    //rs= Array('A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e');
+
+
+    /*Test */
+    var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    var regexp = /[A-E]/gi;
+    var rs = regexp.test(str);
+    console.log(rs);
+    // rs = true; boolean
+
+
+    /*exec*/
+    var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    var regexp = /[A-E]/gi;
+    var rs;
+    while ((rs = regexp.exec(str)) != null) {
+        console.log(rs,regexp.lastIndex);
+    }
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+jquery cdn: http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js
+
+MDN javascript手册
+https://developer.mozilla.org/zh-CN/docs/Web/API/Document/defaultView
+
+
+
+
+
+
+
+
+

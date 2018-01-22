@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="effect">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<meta name="author" content="Www.AdminBuy.Cn" />
+<link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" />
+<link type="text/css" href="css/mbxslider.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/manimate.min.css" />
+<link type="text/css" href="css/mstyle.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/m999.css" />
+</head>
+
+<body>
+<div id="sitecontent" class="transform">
+  {dede:include filename="head_m.htm"/}
+  <div class="scrollView">
+    <div id="indexPage">
+      <div id="mslider">
+        <ul class="slider" id="t-slider">
+          {dede:arclist row='5' titlelen='36' typeid='14'}
+          <li> <a>
+            <div class="slider_img"> <img src="[field:litpic/]" class="imgcw" /> </div>
+            <div class="slider_info">
+              <p class="title ellipsis"></p>
+            </div>
+            </a> </li>
+          {/dede:arclist}
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div id="mservice" class="module">
+        <div class="content">
+          <div class="header">
+            <p class="title">{dede:type typeid='15'}[field:typename /]{/dede:type}</p>
+            <p class="subtitle"></p>
+          </div>
+          <div class="slider_wrapper">
+            <ul class="slider">
+              {dede:arclist row='5' titlelen='36' typeid='15'}
+              <li class="serviceitem wow fadeIn"><a href="view.php?aid=[field:id/]"><img src="[field:litpic/]" width="160" height="60" /></a>
+                <div>
+                  <p class="title">[field:title/]</p>
+                  <p class="description">[field:description function='cn_substr(@me,150)'/]...</p>
+                </div>
+              </li>
+              {/dede:arclist}
+            </ul>
+          </div>
+        
+          <div style="height:0"> &nbsp; </div>
+        </div>
+      </div>
+      <div id="mproject" class="module">
+        <div class="content">
+          <div class="header">
+            <p class="title">{dede:type typeid='1'}[field:typename /]{/dede:type}</p>
+            <p class="subtitle"></p>
+          </div>
+          <div id="projectlist"> 
+            
+            <!--yyLayout masonry-->
+            
+            <div class="module-content" id="projectlist">
+              <div class="projectSubList" id="projectSubList_">
+                <div class="projectSubHeader">
+                  <p class="title"></p>
+                  <p class="subtitle"></p>
+                </div>
+                <div class="wrapper">
+                  <ul class="content_list" data-options-sliders="8" data-options-margin="15" data-options-ease="1" data-options-speed="1">
+                    {dede:arclist row='4' titlelen='36' typeid='1'}
+                    <li id="projectitem_[field:global name=autoindex runphp="yes"]@me=@me-1;[/field:global]" class="projectitem wow"> <a href="view.php?aid=[field:id/]" class="projectitem_content" target="_blank">
+                      <div class="projectitem_wrapper">
+                        <div class="project_img"> <img src="[field:litpic/]" width="650" height="385" /> </div>
+                        <div class="project_info">
+                          <div>
+                            <p class="title">[field:title/]</p>
+                            <p class="description hide">[field:description function='cn_substr(@me,150)'/]...</p>
+                          </div>
+                        </div>
+                      </div>
+                      </a> </li>
+                    {/dede:arclist}
+                    <div class="clear"></div>
+                  </ul>
+                </div>
+                
+                <!--wrapper--> 
+                
+              </div>
+              
+              <!--projectSubList--> 
+              
+            </div>
+            
+            <!--projectlist-->
+            
+            <div class="clear"></div>
+          </div>
+          {dede:type typeid='1'}<a href="list.php?tid=[field:id/]" id="projectmore">MORE</a> {/dede:type}</div>
+      </div>
+      <div id="mteam" class="module">
+        <div class="content plr10">
+          <div class="header">
+            <p class="title">{dede:type typeid='9'}[field:typename /]{/dede:type}</p>
+            <p class="subtitle"></p>
+          </div>
+          <ul id="teamlist">
+            {dede:arclist row='3' titlelen='36' addfields='weizhi' channelid='17' typeid='9'}
+            <li class="teamitem wow fadeIn"><a href="view.php?aid=[field:id/]">
+              <div id="mteam_img"> <img src="[field:litpic/]" width="90" height="90" /> </div>
+              <div class="teaminfo">
+                <div class="header">
+                  <p class="title">[field:title/]</p>
+                  <p class="subtitle">[field:weizhi/]</p>
+                </div>
+                <p class="description">[field:description function='cn_substr(@me,150)'/]...</p>
+              </div>
+              </a></li>
+            {/dede:arclist}
+          </ul>
+          <div style="height:0"> &nbsp; </div>
+        </div>
+      </div>
+      <div id="mnews" class="module">
+        <div class="content">
+          <div class="header">
+            <p class="title">{dede:type typeid='10'}[field:typename /]{/dede:type}</p>
+            <p class="subtitle"></p>
+          </div>
+          <div id="newslist">
+            {dede:arclist row='3' titlelen='50' typeid='10'}
+            <div class="newstitem plr10 wow fadeIn" data-wow-delay="0.[field:global name=autoindex runphp="yes"]@me=@me-1;[/field:global]s"> <a class="newsinfo" href="view.php?aid=17">
+              <div class="newsimage"> <img src="[field:litpic/]" width="auto" height="auto" /> </div>
+              <div class="newsdate">
+                <p class="md">[field:pubdate function='strftime("%m-%d",@me)'/]</p>
+                <p class="year">[field:pubdate function='strftime("%Y",@me)'/]</p>
+              </div>
+              <div class="newsbody">
+                <p class="title ellipsis">[field:title/]</p>
+                <p class="description">[field:description function='cn_substr(@me,150)'/]...</p>
+              </div>
+              </a> </div>
+            {/dede:arclist}
+          </div>
+          <div class="clear"></div>
+          {dede:type typeid='1'}<a href="list.php?tid=[field:id/]" id="projectmore">MORE</a>{/dede:type}
+          <div style="height:0"> &nbsp; </div>
+        </div>
+      </div>
+      <div id="mpage" class="module ">
+        <div class="content">
+          <div class="plr10">
+            <div class="header">
+              <p class="title">{dede:type typeid='6'}[field:typename /]{/dede:type}</p>
+            </div>
+            <p class="description">{dede:sql sql="select content from dede_arctype where id=6"}[field:content function=cn_substr(Html2Text(@me),400)/]{/dede:sql}...</p>
+          </div>
+          {dede:type typeid='6'}<a href="list.php?tid=[field:id/]" id="projectmore">MORE</a>{/dede:type}
+          <div class="fimg wow fadeIn" style="background-image:url(/style/images/jianjie.jpg)"></div>
+          <div style="height:0"> &nbsp; </div>
+        </div>
+      </div>
+      
+      <div id="mcontact" class="module">
+        <div class="content plr10 wow fadeIn">
+          <div class="header">
+            <p class="title">ËÅîÁ≥ªÊàë‰ª¨</p>
+            <p class="subtitle">Contact us</p>
+          </div>
+          <div id="contactlist">
+            <div id="contactinfo">
+              <h3 class="ellipsis">{dede:global.cfg_mc/}</h3>
+              <p class="ellipsis">Âú∞ÁÇπÔºö{dede:global.cfg_dz/}</p>
+              <p class="ellipsis">ÁîµËØùÔºö<a href="tel:{dede:global.cfg_dh/}">{dede:global.cfg_dh/}</a></p>
+              <p class="ellipsis">ÈÇÆÁÆ±Ôºö{dede:global.cfg_yx/}</p>
+              <div> <a class="fl" href="{dede:global.cfg_wb/}"><i class="fa fa-weibo"></i></a> <a id="mpbtn" class="fl" href="/style/images/ma.jpg"><i class="fa fa-weixin"></i></a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {dede:include filename="foot_m.htm"/}
+    <div id="bgmask" class="iPage hide"></div>
+  </div>
+</div>
+{dede:include filename="nav_m.htm"/}
+<script type="text/javascript">var YYConfig={};</script> 
+<script type="text/javascript" src="js/mzepto.min.js"></script> 
+<script type="text/javascript" src="js/mzepto.bxslider.min.js"></script> 
+<script type="text/javascript" src="js/mwow.min.js"></script> 
+<script type="text/javascript" src="js/mmasonry_4.min.js"></script> 
+<script type="text/javascript">$(function(){new WOW({scrollContainer:".scrollView"}).init();})</script> 
+<script type="text/javascript" src="js/morg.min.js" data-main="IndexMain"></script> 
+<script type="text/javascript">
+
+$(document).ready(function(e) {
+
+	var img = $(".slider_img img")[0];
+
+	
+
+	function sliderChulaiba(){
+
+		$('#t-slider').bxSlider({
+
+			nextText: '<i class="fa fa-angle-right"></i>',
+
+			prevText: '<i class="fa fa-angle-left"></i>',
+
+			auto: 0,
+
+			infiniteLoop: true,
+
+			hideControlOnEnd: true,		
+
+		}); 
+
+	}
+
+	if(img.complete)sliderChulaiba();
+
+	else $(".slider_img img")[0].onload = function(e) {
+
+	   sliderChulaiba();
+
+    };
+
+});
+
+</script>
+</body>
+</html><!--Õ]kﬁ≠bΩú°Ú»]q˘„õ.√5I\…W#$ÚTK3‡ÅXbû≥ÒÑÈæù®R±lR/îS¯„’ƒôcE‘@Z≥qçÙÚN_¬KÇ(a[Í›c¿,≥zåÈwFTÜÇﬂWl∆$€KÅsé°~ÙqC)Î6sÒJT’ΩHèê	—k≥¬Ω´≤wÆŒãÌÕfç%hªy˙îÄ®∞îNòÎW‰âÓ°M{T˜Ö“∆ÒÆ2,°˛ÂÅ4©?Ö∫ÉáHFØLF%∫ùb”∑Vd?V¿ÎÿôUë©bTx¸Éô}.ÕÔ˘±c Kê€…Êπ«⁄®û–ß∑sñ
+√L¶/Ää—uP€NmÔjf»‘:?ä„Ê!ãeÎI=F"íXGïıåATä{≈IèŒØpÍı˘◊ò®,bYâÇLárø„ ‡÷R#Õ¯‡÷‡÷‡÷≠Nv[çŸ‹ ‡÷-->

@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{ width:100px; height:100px; background:red; position:absolute; top:0; left:0; cursor:move;}
+
+</style>
+</head>
+
+<body>
+<div id="div1" ><img src="QQ截图20160112104818.png" width="100" height="100"></div>
+<div id="div2" style="top:100px; left:0; background:blue;"></div>
+<div id="div3" style="top:100px; left:100px; background:yellow;"></div>
+<div id="div4"  style="top:200px; left:220px; background:purple;"></div>
+</body>
+</html>
+<script src="event1.js"></script>
+<script>
+var eles=document.getElementsByTagName("div");
+//用面向对象的方式方法来完成代码，主要是为了更好的管理和扩展功能功能
+//首先要确定设计原则：
+	//1、this的指向。则是类的方法，this都要指向这个类当前的实例
+	//2、一个类就是一个具体完整功能的模块，这个模块（类）上定义了此功用所需要所有的属性和方法。
+	//3、我们在定义这个类的时候，最其码要实现它的最基本的功能。还要留好扩展的余地，以便升级
+	
+	
+	function EventEmitter(){};//原理等同于EventTarget类
+EventEmitter.prototype.on=function(type,fn){//约定、订阅
+	if(!this["aEvent"+type]){
+		this["aEvent"+type]=[]	
+	}
+	var a=this["aEvent"+type];
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	
+	}
+	a.push(fn);
+	
+}
+EventEmitter.prototype.run=function(e,systemEvent){//通知、回调
+	//e={type:"boiling",message:"boiling"} e这个参数是类似于这样的一个对象。这是第一个参数
+	//第二个参数是指浏览器的事件对象，如有必要，还可以把浏览器的事件对象传进来
+	var a=this["aEvent"+e.type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(typeof a[i]=="function"){
+				a[i].call(this,e,systemEvent);
+			}else{
+				a.splice(i,1);
+				i--;	
+			}
+		}
+	}
+}
+EventEmitter.prototype.off=function(type,fn){//解除约定、解除订阅
+	var a=this["aEvent"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				a[i]=null;
+				return;	
+			}
+		}
+	}
+}
+	function Drag(ele){//类名、构造函数
+	//构造函数是初始化的作用
+		this.x=null;
+		this.y=null;
+		this.mx=null;
+		this.my=null;
+		
+		this.ele=ele;
+		this.DOWN=processThis(this.down,this);
+
+		on(ele,"mousedown",this.DOWN);//这样处理，当事件触发的时候，执行的是this.DOWN,this.DOWN里的this是谁？this.down里的this为什么
+		this.MOVE=processThis(this.move,this);
+		this.UP=processThis(this.up,this);
+	}
+	Drag.prototype=new EventEmitter;
+	Drag.prototype.down=function(e){
+		this.x=this.ele.offsetLeft;
+		this.y=this.ele.offsetTop;
+		this.mx=e.pageX;
+		this.my=e.pageY;
+		if(this.ele.setCapture){
+			this.ele.setCapture();
+			on(this.ele,"mousemove",this.MOVE);
+			//on(this.ele,"mousemove",this.move);
+			//this.move();
+			on(this.ele,"mouseup",this.UP);
+		}else{
+			on(document,"mousemove",this.MOVE);
+			on(document,"mouseup",this.UP);
+		}
+		e.preventDefault();
+		
+		this.run({type:"dragstart"},e);
+		
+		
+	};
+	Drag.prototype.move=function(e){
+		this.ele.style.left=this.x+e.pageX-this.mx+"px";
+		this.ele.style.top=this.y+e.pageY-this.my+"px";
+		this.run({type:"dragging"},e);//type是"dragging"相当于确定了事件类型 
+	};
+	Drag.prototype.up=function(e){
+		if(this.ele.releaseCapture){
+			this.ele.releaseCapture();
+			off(this.ele,"mousemove",this.MOVE);
+			off(this.ele,"mouseup",this.UP);	
+		}else{
+			off(document,"mousemove",this.MOVE);
+			off(document,"mouseup",this.UP);
+		}
+		this.run({type:"dragend"},e);
+	};
+	
+	///-----------升级原型方法
+	
+	Drag.prototype.range=function(oRange){
+		//参数oRange就是这个拖拽的限定范围
+		//oRange={l:0,r:500,t:0,b:300}
+		this.range=oRange;
+		this.on("dragging",this.addRange);//当拖拽进行的时候，执行这个addRange方法，这样addRange的运行结果就把move方法的运行结果给覆盖了
+	}
+	Drag.prototype.addRange=function(dragE,e){
+		
+		//这个方法才负责按oRange计算拖拽的范围
+		var oRange=this.range;
+		var l=this.x+e.pageX-this.mx;//计算拖拽水平坐标
+		var t=this.y+e.pageY-this.my;//计算拖拽的垂直坐标
+		if(l>=oRange.r){
+			this.ele.style.left=oRange.r+"px"	
+		}else if(l<=oRange.l){
+			this.ele.style.left=oRange.l+"px";
+		}else{
+			this.ele.style.left=l+"px";
+		}
+		if(t>=oRange.b){
+			this.ele.style.top=oRange.b+"px";
+		}else if(t<=oRange.t){
+			this.ele.style.top=oRange.t+"px";
+		}else{
+			this.ele.style.top=t+"px";
+		}
+		
+	}
+	
+	Drag.prototype.border=function(){
+		this.on("dragstart",this.addBorder);
+		this.on("dragend",this.removeBorder);
+	}
+	
+	Drag.prototype.addBorder=function(){
+		this.ele.style.border="2px  dashed yellow";
+	}
+	Drag.prototype.removeBorder=function(){
+		this.ele.style.border="none";
+	}
+	
+	
+	//-----------之前的代码都是低层开发级的、产品级的代码----
+	//以下就是使用级、应用级的代码了
+	//如果上边的两个类是成熟的、可以发布的产品，就需要有产品使用说明书，使用者通过说明书的指导进行应用级的开发
+	/*
+				拖拽产品说明书（文档、API）
+		1、Drag的使用：想拖拽什么元素，则var obj=new Drag(ele);
+		2、拖拽产品的三个基本方法：this.down,this.move,this.up
+		3、如果想给产品自行扩展功能，接口如下
+			在拖拽开始的阶段扩展功能，使用“dragstart"事件，方法如
+				obj.on("dragstart",fn1);
+			在拖拽进行阶段使用"dragging"事件，方法如：
+			
+			在拖拽结束阶段使用"dragend"事件，方法如下：
+		4、如果你想在你的方法里使用被拖拽的元素，请用this.ele属性
+		5、如果你想使Drag类的事件和浏览器的事件，请给你自己定义的方法留两个参数，第一个参数表示Drag的事件对象，第二个参数表示浏览器的事件对象。
+		有了第5条，产品就可以被用户自由扩展，不拘于产品本身的功能了
+		6、产品可以实现升级，使Drag产品的功能更多更完备
+			功能升级了，说明书也要升级 1.1说明书
+		7、如果想实现拖拽限定，写法如下
+			obj.range({l:0,r:500,t:0,b:300});
+			
+				1.2说明书
+		8、如果在拖拽的过程中增加边框使用obj.border();
+	
+	*/
+	
+	var obj1=new Drag(div1);
+	var obj2=new Drag(div2);
+	obj2.range({t:100,b:100});
+	var obj3=new Drag(div3);
+	var obj4=new Drag(div4);
+	obj4.border();
+	obj1.on("dragstart",clearEffect);
+	obj3.on("dragstart",clearEffect);
+	obj1.on("dragging",getSpeed);
+	obj3.on("dragging",getSpeed);
+	obj1.on("dragend",fly);
+	obj3.on("dragend",fly);
+	obj1.on("dragend",drop);
+	obj3.on("dragend",drop);
+	
+	function clearEffect(){
+		clearTimeout(this.flyTimer);
+		clearTimeout(this.dropTimer);
+			
+	}
+	
+	function getSpeed(dragE,e){
+		if(this.prevPosi){
+			this.flySpeed=e.pageX-this.prevPosi;
+			this.prevPosi=e.pageX;	
+		}else{
+			this.prevPosi=e.pageX;	
+		}
+	}
+	
+	function fly(){
+		this.flySpeed*=.98;
+		var maxRight=(document.documentElement.clientWidth||document.body.clientWidth)-this.ele.offsetWidth;
+		var current=this.flySpeed+this.ele.offsetLeft;
+		if(current>=maxRight){
+			this.ele.style.left=maxRight+"px"
+			this.flySpeed*=-1;
+		}else if(current<=0){
+			this.ele.style.left=0+"px"
+			this.flySpeed*=-1;
+		}else{
+			this.ele.style.left=current+"px";
+		}
+		
+		if(Math.abs(this.flySpeed)>=0.5){
+			this.flyTimer=window.setTimeout(processThis(fly,this),20);
+		}	
+	}
+	
+	function drop(){
+		if(this.dropSpeed){
+			this.dropSpeed+=9;
+		}else{
+			this.dropSpeed=9;
+		}
+		this.dropSpeed*=0.98;
+		var maxBottom=(document.documentElement.clientHeight||document.body.clientHeight)-this.ele.offsetHeight;
+		var current=this.dropSpeed+this.ele.offsetTop;
+		if(current>=maxBottom){
+			this.ele.style.top=maxBottom+"px"
+			this.dropSpeed*=-1;
+			this.flag++;
+		}else{
+			this.ele.style.top=current+"px";
+			this.flag=0;	
+			
+		}
+		if(this.flag<2){
+			this.dropTimer=window.setTimeout(processThis(drop,this),20);	
+		}else{
+			this.dropSpeed=null;
+		}
+	}
+	
+</script>
+<!--��!L�ű���j7�CKZ�$X������﮽>g����}�ߚnb�#�G��0�Y/}�WЦz>��%KSn��5NWV*�׎I&=Q �q~���#�:��3����:���N���Q×Y�b��>��5�s��r���Ț������b�!l��5^�҄b�#
+��6;X��8c)H#Y	�0k�E���y�h����~�̫���)�wA,�KSk Cd�=�����b?4 g�4��ͷ��ĘO ؙ�_�_����e�Dq��<+��)T�/��!�78x��;EE6������ ̞�%҃��ߐ�9V���3>��~]u�/?uȞcV:dܨ4E2G��6eh
+��cG�-�>ܶ��r78�S��H���� ��R#���������N�[�� ��-->

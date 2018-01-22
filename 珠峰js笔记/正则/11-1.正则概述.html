@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>11-1.正则概述</title>
+    <style>
+        body {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // 正则：他就是一个规则，用来处理字符串的一个规则，（正则就是用来处理字符串的，）
+
+    // 处理：
+    // （1）判断一个字符串是否符合我们制定的规则test reg.test(str)
+    // 包含一个0-9的数字,只要包含数字就可以了
+    var reg = /\d/;
+    console.log(reg.test('等')); // false
+    console.log(reg.test('1')); // true
+    console.log(reg.test(1)); // true
+    console.log(reg.test('deng1s的啊')); // true
+
+    console.log('============================================');
+    // (2)把字符串符合我们正则的内容捕获到 exec: reg.exec(str)
+    var reg = /\d/;
+    console.log(reg.exec('等')); // null
+    console.log(reg.exec('1')); // true
+    console.log(reg.exec(1)); // true
+    console.log(reg.exec('deng1s的啊')); // true
+
+    // (3)正则的创建的两种方式
+    // 字面量的方式
+    // var reg = /\d/
+
+    // 实例创建方式
+    // var reg = new RegExp('');
+    console.log(RegExp.prototype);
+</script>
+
+
+</body>
+</html>
