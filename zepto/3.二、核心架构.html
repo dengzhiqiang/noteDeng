@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.二、核心架构</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<p id="person">
+    <span></span>
+</p>
+<script src="zepto.js"></script>
+<script>
+    var Zepto = (function () {
+        var $, zepto = {};
+        $.trim = function (str) {
+            // 省略
+        };
+        $ = function (selector, context) {
+            return zepto.init(selector, context)
+        };
+        $.fn = {
+            addClass: function (name) {
+                // 省略
+            }
+            // 省略
+        };
+        zepto.Z.prototype = Z.prototype = $.fn;
+        $.zepto = zepto;
+
+        return $;
+    })()
+</script>
+</body>
+</html>

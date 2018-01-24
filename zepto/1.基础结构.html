@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.基础结构</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<p id="person">
+    <span></span>
+</p>
+<script src="zepto.js"></script>
+<script>
+    // https://segmentfault.com/a/1190000007515865
+    console.log($.prototype);
+    console.log($("#person"));
+    console.log($);
+    // 结果如上图，展开绿色1即可看到所有前缀的方法，
+    // 展开图中2可看到所有的不带前缀的方法。
+    // 图中3返回的是一个函数。
+
+//    1中的结果可以看出像$.trim这类方法保存在$.prototype的构造函数中，也就是在$中，但是$打印出来的是却一个函数，为了解决这中迷惑性，以下代码重现了这种情况，可以看出，$确实是一个函数，只是这个函数多了一些特定的方法。$.trim只是$的一个属性。
+
+//   2中的方法都在对象的原型函数中，因为它执行了$()函数返回了一个对象Z，该对象的原型中包含一些类似于addClass方法。
+
+//    我认为这种写法的好处有，调用$()后返回的对象是一个新对象，就没有类似$.trim这类方法，且addClass这类方法都在原型函数中，更能节省内存。
+
+// 不执行$函数对象，只是调用其函数中的特定属性，该对象只会创建一次（在引入zepto时就已经初始化了），同样不会浪费内存。
+
+// 两种类型的方法共用同一个变量名，减少命名冲突的可能，封装更彻底。
+
+
+
+
+</script>
+</body>
+</html>
