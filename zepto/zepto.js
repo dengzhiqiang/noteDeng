@@ -1,6 +1,7 @@
 //     Zepto.js
 //     (c) 2010-2017 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
+//     http://www.runoob.com/w3cnote/zepto-js-source-analysis.html   zepto注释版本
 
 var Zepto = (function () {
     var undefined, key, $, classList, emptyArray = [], concat = emptyArray.concat, filter = emptyArray.filter,
@@ -35,8 +36,8 @@ var Zepto = (function () {
             '*': document.createElement('div')
         },
         simpleSelectorRE = /^[\w-]*$/,
-        class2type = {},
-        toString = class2type.toString,
+        class2type = {}, /* 类型转换 */
+        toString = class2type.toString, /* toString方法 */
 
         /*zepto 是一个空对象*/
         zepto = {},
@@ -58,21 +59,34 @@ var Zepto = (function () {
         },
         isArray = Array.isArray ||
             function (object) {
+                /* 判断是否为数组 */
                 return object instanceof Array
             };
 
+    /* 判断一个元素是否匹配给定的选择器 */
     zepto.matches = function (element, selector) {
-        if (!selector || !element || element.nodeType !== 1) return false
+        if (!selector || !element || element.nodeType !== 1) return false;
+
+        /* 引用浏览器提供的MatchesSelector方法 */
         var matchesSelector = element.matches || element.webkitMatchesSelector ||
             element.mozMatchesSelector || element.oMatchesSelector ||
-            element.matchesSelector
-        if (matchesSelector) return matchesSelector.call(element, selector)
+            element.matchesSelector;
+        if (matchesSelector) return matchesSelector.call(element, selector);
+
+        // 如果浏览器不支持MatchesSelector方法，则将节点放入一个临时div节点，
+        // 再通过selector来查找这个div下的节点集，再判断给定的element是否在节点集中，如果在，则返回一个非零(即非false)的数字
         // fall back to performing a selector:
-        var match, parent = element.parentNode, temp = !parent
-        if (temp) (parent = tempParent).appendChild(element)
-        match = ~zepto.qsa(parent, selector).indexOf(element)
-        temp && tempParent.removeChild(element)
-        return match
+        var match, parent = element.parentNode, temp = !parent;
+
+        // 当element没有父节点，那么将其插入到一个临时的div里面
+        if (temp) (parent = tempParent).appendChild(element);
+
+        // 将parent作为上下文，来查找selector的匹配结果，并获取element在结果集的索引，不存在时为－1,再通过~-1转成0，存在时返回一个非零的值
+        match = ~zepto.qsa(parent, selector).indexOf(element);
+
+        // 将插入的节点删掉
+        temp && tempParent.removeChild(element);
+        return match;
     };
 
     function type(obj) {

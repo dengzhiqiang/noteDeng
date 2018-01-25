@@ -8,9 +8,14 @@
     <title>1.==和===</title>
 </head>
 <body>
+
+<script>
+    //    Always use 3 equals unless you have a good reason to use 2.
+    //    应该总是用===代替==
+</script>
 <script>
     console.time('===');
-    for(var i= 0,bool;i<1000000000;i++){
+    for (var i = 0, bool; i < 1000000000; i++) {
         bool = Object.prototype == Object.getPrototypeOf({});
     }
     console.timeEnd('===');
@@ -18,7 +23,7 @@
 </script>
 <script>
     console.time('===');
-    for(var i= 0,bool;i<1000000000;i++){
+    for (var i = 0, bool; i < 1000000000; i++) {
         bool = Object.prototype === Object.getPrototypeOf({});
     }
     console.timeEnd('===');
