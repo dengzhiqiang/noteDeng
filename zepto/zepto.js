@@ -8,6 +8,8 @@ var Zepto = (function () {
         slice = emptyArray.slice,
         document = window.document,
         elementDisplay = {}, classCache = {},
+
+        //  设置CSS时，不用加px单位的属性
         cssNumber = {
             'column-count': 1,
             'columns': 1,
@@ -17,27 +19,51 @@ var Zepto = (function () {
             'z-index': 1,
             'zoom': 1
         },
+
+        //  HTML代码片断的正则
         fragmentRE = /^\s*<(\w+|!)[^>]*>/,
+
+
         singleTagRE = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
+
+        //  匹配非单独一个闭合标签的标签，类似将<div></div>写成了<div/>
         tagExpanderRE = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,
+
+        //  根节点
         rootNodeRE = /^(?:body|html)$/i,
+
         capitalRE = /([A-Z])/g,
 
+        //  需要提供get和set的方法名
         // special attributes that should be get/set via method calls
         methodAttributes = ['val', 'css', 'html', 'text', 'data', 'width', 'height', 'offset'],
 
+        //  相邻节点的一些操作
+        //  美 [ə'dʒeɪsənsɪ] 邻接
         adjacencyOperators = ['after', 'prepend', 'before', 'append'],
+
+
         table = document.createElement('table'),
         tableRow = document.createElement('tr'),
+
+        //  这里的用途是当需要给tr,tbody,thead,tfoot,td,th设置innerHTMl的时候，需要用其父元素作为容器来装载HTML字符串
         containers = {
             'tr': document.createElement('tbody'),
-            'tbody': table, 'thead': table, 'tfoot': table,
-            'td': tableRow, 'th': tableRow,
+            'tbody': table,
+            'thead': table,
+            'tfoot': table,
+            'td': tableRow,
+            'th': tableRow,
             '*': document.createElement('div')
         },
+
         simpleSelectorRE = /^[\w-]*$/,
-        class2type = {}, /* 类型转换 */
-        toString = class2type.toString, /* toString方法 */
+
+        /* 类型转换 */
+        class2type = {},
+
+        /* toString方法 */
+        toString = class2type.toString,
 
         /*zepto 是一个空对象*/
         zepto = {},
@@ -57,11 +83,10 @@ var Zepto = (function () {
             'frameborder': 'frameBorder',
             'contenteditable': 'contentEditable'
         },
-        isArray = Array.isArray ||
-            function (object) {
-                /* 判断是否为数组 */
-                return object instanceof Array
-            };
+        isArray = Array.isArray || function (object) {
+            /* 判断是否为数组 */
+            return object instanceof Array
+        };
 
     /* 判断一个元素是否匹配给定的选择器 */
     zepto.matches = function (element, selector) {
@@ -119,19 +144,30 @@ var Zepto = (function () {
         return isObject(obj) && !isWindow(obj) && Object.getPrototypeOf(obj) === Object.prototype
     }
 
+    /**
+     * 判断是否为类数组
+     * @param obj
+     * @returns {boolean}
+     */
     function likeArray(obj) {
         var length = !!obj && 'length' in obj && obj.length,
-            type = $.type(obj)
+            type = $.type(obj);
 
-        return 'function' != type && !isWindow(obj) && (
-            'array' == type || length === 0 ||
-            (typeof length == 'number' && length > 0 && (length - 1) in obj)
+        return 'function' !== type && !isWindow(obj) && (
+            'array' === type || length === 0 ||
+            (typeof length === 'number' && length > 0 && (length - 1) in obj)
         )
     }
 
+    /**
+     *  compact 美 [ˈkɑ:mˈpækt] 压紧，（使）坚实;把…弄紧密，把…弄结实
+     * 清除给定的参数中的null或undefined，注意0==null,'' == null为false
+     * @param array
+     * @returns {*}
+     */
     function compact(array) {
         return filter.call(array, function (item) {
-            return item != null
+            return item != null;
         })
     }
 
@@ -424,8 +460,24 @@ var Zepto = (function () {
     };
 
     $.camelCase = camelize;
+    /**
+     * 去除字符串的前后空格
+     * @param str
+     * @returns {string}
+     */
     $.trim = function (str) {
-        return str == null ? "" : String.prototype.trim.call(str)
+        // String.prototype.trim上面有这个方法
+        /**
+         * 等价于
+         * if (String.prototype.trim === undefined) {
+         *     String.prototype.trim = function () {
+         *         this.replace(/^\s+|\s+$/g, '');
+         *     }
+         * }
+         */
+
+        return str == null ? "" : String.prototype.trim.call(str);
+
     };
 
     // plugin compatibility
