@@ -89,15 +89,20 @@ var Zepto = (function () {
     }
 
     function isDocument(obj) {
-        return obj != null && obj.nodeType == obj.DOCUMENT_NODE
+        // undefined null
+        // document.nodeType = 9
+        // document.DOCUMENT_NODE = 9
+        //  x === null || x === undefined
+        // 下面的代码等价于 return (obj !== null || obj !== undefined) && (obj.nodeType === obj.DOCUMENT_NODE)
+        return obj != null && obj.nodeType === obj.DOCUMENT_NODE
     }
 
     function isObject(obj) {
-        return type(obj) == "object"
+        return type(obj) === "object"
     }
 
     function isPlainObject(obj) {
-        return isObject(obj) && !isWindow(obj) && Object.getPrototypeOf(obj) == Object.prototype
+        return isObject(obj) && !isWindow(obj) && Object.getPrototypeOf(obj) === Object.prototype
     }
 
     function likeArray(obj) {
@@ -221,7 +226,9 @@ var Zepto = (function () {
     // `$.zepto.isZ` should return `true` if the given object is a Zepto
     // collection. This method can be overridden in plugins.
     zepto.isZ = function (object) {
-        return object instanceof zepto.Z
+        return object instanceof zepto.Z;
+        // 上面的那就话，实际上等价于 Z.protoype
+        // return object instanceof Z.protoype
     };
 
     // `$.zepto.init` is Zepto's counterpart to jQuery's `$.fn.init` and
@@ -313,7 +320,7 @@ var Zepto = (function () {
             maybeID = selector[0] == '#',
             maybeClass = !maybeID && selector[0] == '.',
             nameOnly = maybeID || maybeClass ? selector.slice(1) : selector, // Ensure that a 1 char tag name still gets checked
-            isSimple = simpleSelectorRE.test(nameOnly)
+            isSimple = simpleSelectorRE.test(nameOnly);
         return (element.getElementById && isSimple && maybeID) ? // Safari DocumentFragment doesn't have getElementById
             ( (found = element.getElementById(nameOnly)) ? [found] : [] ) :
             (element.nodeType !== 1 && element.nodeType !== 9 && element.nodeType !== 11) ? [] :
@@ -408,9 +415,9 @@ var Zepto = (function () {
     };
 
     // plugin compatibility
-    $.uuid = 0
-    $.support = {}
-    $.expr = {}
+    $.uuid = 0;
+    $.support = {};
+    $.expr = {};
     $.noop = function () {
     };
 
@@ -1044,3 +1051,5 @@ var Zepto = (function () {
 // If `$` is not yet defined, point it to `Zepto`
 window.Zepto = Zepto;
 window.$ === undefined && (window.$ = Zepto);
+
+

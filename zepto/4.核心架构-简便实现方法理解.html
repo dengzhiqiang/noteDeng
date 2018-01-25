@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.核心架构-简便实现方法理解</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">box</div>
+<div class="box">box</div>
+<script>
+    var Zepto = (function () {
+        // 先定义函数和zepto对象
+        var $, zepto = {};
+
+
+        $ = function (selector) {
+            // $('#box')
+            // $(function(){})
+            return obj = zepto.init(selector);
+        };
+
+
+        function Z(dom, selector) {
+            for (var i = 0, len = dom.length; i < len; i++) {
+                // 把dom元素都挂到zepto对象上面去
+                this[i] = dom[i];
+            }
+            // 把元素个数（长度挂载到zepto对象上面去）
+            this.length = len;
+
+            // 把传入的选择器挂载到zepto上面
+            this.selector = selector || ''
+        }
+
+
+
+        zepto.Z = function (dom, selector) {
+            return new Z(dom, selector);
+        };
+
+        $.fn = {
+            constructor: zepto.Z,
+            alert: function () {
+                alert('ok!');
+            }
+        };
+        Z.prototype = $.fn;
+
+
+        // 初始化,根据各种情况获取zepto 对象
+        zepto.init = function (selector, content) {
+            var dom;
+
+            // 如果什么也不传入，直接返回一个空的的zepto对象
+            if (!selector) return zepto.Z();
+
+            // 如果是字符串,则获取元素节点
+            if (typeof selector === 'string') {
+                // 一系列获取元素节点的方法 ...
+                dom = document.querySelectorAll(selector);
+//                console.log(dom);
+            }
+
+            return zepto.Z(dom, selector);
+        };
+
+        return $;
+    })();
+
+    window.Zepto = Zepto;
+    // 如果还没有定义$，则使用$
+    window.$ === undefined && (window.$ = Zepto);
+
+
+</script>
+<script>
+    var dom = $('.box');
+    console.log(dom);
+</script>
+</body>
+</html>

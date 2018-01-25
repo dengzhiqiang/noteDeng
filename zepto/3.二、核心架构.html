@@ -21,24 +21,61 @@
 <script src="zepto.js"></script>
 <script>
     var Zepto = (function () {
-        var $, zepto = {};
-        $.trim = function (str) {
-            // 省略
+        // 私有变量($和zepto不是私有变量，它们会被暴露出去)
+        var
+            $, zepto = {};
+
+        // Z类
+        function Z(dom, selector) {
+            var i, len = dom ? dom.length : 0;
+            for (i = 0; i < len; i++) this[i] = dom[i];
+            this.length = len;
+            this.selector = selector || ''
+        }
+
+        $ = function (seclecor, context) {
+            return zepto.init(selector, context);
         };
-        $ = function (selector, context) {
-            return zepto.init(selector, context)
+
+        zepto.Z = function (dom, selector) {
+            return new Z(dom, selector)
         };
+
+        zepto.isZ = function () {
+            return object instanceof zepto.Z
+        };
+
+        zepto.init = function () {
+        };
+
+
+        // Z 对象的共享方法
         $.fn = {
-            addClass: function (name) {
-                // 省略
+            constructor: zepto.Z,
+            length: 0,
+            index: function (element) {
+                return element ? this.indexOf($(element)[0]) : this.parent().children().indexOf(this[0])
+            },
+            hasClass: function (name) {
+                if (!name) return false
+                return emptyArray.some.call(this, function (el) {
+                    return this.test(className(el))
+                }, classRE(name))
             }
-            // 省略
         };
+
+        // 修改zepto.Z和Z的原型都指向$.fn
         zepto.Z.prototype = Z.prototype = $.fn;
+
+        // 把内部的一些API函数通过  $.zepto命名空间暴露出去
         $.zepto = zepto;
 
         return $;
-    })()
+    })();
+
+    window.Zepto = Zepto;
+    // 如果还没有定义$，则使用$
+    window.$ === undefined && (window.$ = Zepto);
 </script>
 </body>
 </html>
