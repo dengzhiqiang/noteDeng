@@ -202,6 +202,9 @@ var Zepto = (function () {
      * camelize 将使用连字符-的属性转换为驼峰式写法
      * 第一个参数是个正则表达式：匹配一个或多个-以及连字符后面的一个字母，
      * 并将字母转换大写。
+     *
+     *  将 word-word 的形式的字符串转换成 wordWord 的形式， - 可以为一个或多个。
+     *  正则表达式匹配了一个或多个 - ，捕获组是捕获 - 号后的第一个字母，并将字母变成大写。
      * @param str
      */
     camelize = function (str) {
@@ -209,6 +212,7 @@ var Zepto = (function () {
             return chr ? chr.toUpperCase() : ''
         })
     };
+
 
     function dasherize(str) {
         return str.replace(/::/g, '/')
@@ -218,6 +222,13 @@ var Zepto = (function () {
             .toLowerCase()
     }
 
+    /**
+     * 数组去重。
+     * 数组去重的原理是检测 item 在数组中第一次出现的位置是否和 item 所处的位置相等，
+     * 如果不相等，则证明不是第一次出现，将其过滤掉。
+     * @param array
+     * @returns {*}
+     */
     uniq = function (array) {
         return filter.call(array, function (item, idx) {
             return array.indexOf(item) == idx

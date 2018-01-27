@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.Array.prototype.indexOf</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+<script>
+    //    indexOf()方法返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。
+    //    注意：对于String方法，请参阅 String.prototype.indexOf()。
+    var a = [2, 9, 7, 8, 9];
+
+    a.indexOf(2); // 0
+    a.indexOf(6); // -1
+    a.indexOf(7); // 2
+    a.indexOf(8); // 3
+    a.indexOf(9); // 1
+
+    if (a.indexOf(3) === -1) {
+        // element doesn't exist in array
+    }
+</script>
+</body>
+</html>
