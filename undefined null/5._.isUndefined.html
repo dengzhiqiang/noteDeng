@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5._.isUndefined</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        a {
+            color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+
+
+<script>
+    var _ = {};
+
+    // Is a given variable undefined?
+    // 判断给定的变量是否是 undefined
+    _.isUndefined = function (obj) {
+        // void 0返回undefined
+        return obj === void 0;
+    };
+
+
+    // 在IE8中，等其他浏览器中  var undefined = 'ok!';
+    // undefined是可以改变的
+    // 为了获取 纯正的undefined使用void 0 他总是会返回undefined
+</script>
+</body>
+</html>

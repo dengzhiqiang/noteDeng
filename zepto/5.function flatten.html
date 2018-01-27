@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.function flatten</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+<script>
+    function flatten(array) {
+        return array.length > 0 ? [].concat.apply([], array) : array
+    }
+
+    /**
+     * 如果传入的是一个数组，并且这个数组不是空的，得到数组的副本，并且不更改原来的数组
+     * @type {[number,number,number,number]}
+     */
+    var array = [1, 2, 3, 4];
+    var newArray = flatten(array);
+    console.log(newArray.toString());
+
+    newArray.push('push');
+    console.log(newArray.toString());
+    console.log(array.toString());
+
+</script>
+
+<script>
+    console.log('====如果传入的值是空数组！====');
+
+    function flatten2(array) {
+        return array.length > 0 ? [].concat.apply([], array) : array
+    }
+
+    /**
+     * 如果传入的是一个空的数组，得到数组的副本，但是后续会更改数组的值
+     * 此方法应该修正，不应该有两种情况
+     * @type {[number,number,number,number]}
+     */
+    var array2 = [];
+    var newArray2 = flatten2(array2);
+    console.log(newArray2.toString());
+
+    newArray2.push('push');
+    console.log(newArray2.toString());
+    console.log(array2.toString());
+
+</script>
+</body>
+</html>

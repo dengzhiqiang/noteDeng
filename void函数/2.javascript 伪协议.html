@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.javascript 伪协议 </title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+<script>
+    //    https://www.cnblogs.com/song-song/p/5277838.html
+    //    https://www.cnblogs.com/tekkaman/p/6171372.html
+    //    http://www.runoob.com/js/js-void.html
+    //    https://segmentfault.com/q/1010000000339082
+
+
+    //    【javascript 伪协议】
+
+    //  将javascript代码添加到客户端的方法是把它放置在伪协议说明符
+    // javascript:后的URL中。这个特殊的协议类型声明了URL的主体是任意的javascript代码，它由javascript的解释器运行。
+    // 如果javascript:URL中的javascript代码含有多个语句，必须使用分号将这些语句分隔开。这样的URL如下所示：
+
+
+    javascript:var now = new Date();
+    "<h1>The time is:</h1>" + now;
+    //    当浏览器装载了这样的URL时，它将执行这个URL中包含的javascript代码，并把最后一条javascript语句的字符串值作为新文档的内容显示出来。这个字符串值可  以含有HTML标记，并被格式化，其显示与其他装载进浏览器的文档完全相同。
+
+    //javascript URL还可以含有只执行动作，但不返回值的javascript语句。例如：
+
+    javascript:alert("hello world!");
+    //    装载了这种URL时，浏览器仅执行其中的javascript代码，但由于没有作为新文档来显示的值，因此它并不改变当前显示的文档。
+
+    //通常我们想用javascript:URL执行某些不改变当前显示的文档的javascript代码。要做到这一点，必须确保URL中的最后一条语句没有返回值。一种方法是用void运算符显式地把返回值指定为underfined，只需要在javascript:URL的结尾使用语句void 0;即可。例如：下面的URL将打开一个新的空浏览器窗口，而不改变当前窗口的内容：
+
+    javascript:window.open("about:blank");
+    void 0;
+
+    //    如果这个URL没有void运算符，window.open()方法的返回值将被转换成字符串并被显示出来，当前窗口将被如下所示的文档覆盖。
+</script>
+</body>
+</html>

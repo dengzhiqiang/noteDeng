@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.void 0 </title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+<script>
+    //    void expression
+    //    这个运算符能向期望一个表达式的值是undefined的地方插入会产生副作用的表达式。
+    //
+    //void 运算符通常只用于获取 undefined的原始值，一般使用void(0)（等同于void 0）。在上述情况中，也可以使用全局变量undefined 来代替（假定其仍是默认值）。
+</script>
+
+<script>
+    //    立即调用的函数表达式
+
+    //    在使用立即执行的函数表达式时，可以利用 void 运算符让
+    // JavaScript 引擎把一个function关键字识别成函数表达式而不是函数声明（语句）。
+
+    void function iife() {
+        var bar = function () {
+        };
+        var baz = function () {
+        };
+        var foo = function () {
+            bar();
+            baz();
+        };
+        var biz = function () {
+        };
+
+        foo();
+        biz();
+    }();
+</script>
+</body>
+</html>

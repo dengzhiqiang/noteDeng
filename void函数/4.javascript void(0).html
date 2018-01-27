@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.javascript void(0)</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        a{
+            color:deeppink;
+        }
+    </style>
+</head>
+<body>
+<button>button</button>
+<a href="javascript:void(0);">
+    这个链接点击之后不会做任何事情，如果去掉 void()，
+    点击之后整个页面会被替换成一个字符 0。
+</a>
+<p> chrome中即使<a href="javascript:0;">也没变化，firefox中会变成一个字符串0</p>
+<a href="javascript:void(document.body.style.backgroundColor='#18630C');">
+    点击这个链接会让页面背景变成绿色。
+</a>
+
+<script>
+    //    当用户点击一个以 javascript: URI 时，它会评估URI中的代码，然后用返回的值替换页面内容，除非返回的值是undefined。void运算符可用于返回undefined。例如：
+
+//    注意，虽然这么做是可行的，但利用 javascript: 伪协议来执行 JavaScript 代码是不推荐的，推荐的做法是为链接元素绑定事件。
+</script>
+</body>
+</html>

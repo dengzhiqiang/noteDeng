@@ -3,6 +3,10 @@
 //     Zepto.js may be freely distributed under the MIT license.
 //     http://www.runoob.com/w3cnote/zepto-js-source-analysis.html   zepto注释版本
 
+
+/* 读源码系列文章 */
+//      https://www.gitbook.com/book/yeyuqiudeng/reading-zepto/details
+
 var Zepto = (function () {
     var undefined, key, $, classList, emptyArray = [], concat = emptyArray.concat, filter = emptyArray.filter,
         slice = emptyArray.slice,
@@ -114,8 +118,13 @@ var Zepto = (function () {
         return match;
     };
 
+    /**
+     * 类型检测
+     * @param obj 参数
+     * @returns {*}  返回类型字符串
+     */
     function type(obj) {
-        return obj == null ? String(obj) :
+        return obj === null || obj === undefined ? String(obj) :
             class2type[toString.call(obj)] || "object"
     }
 
@@ -166,15 +175,35 @@ var Zepto = (function () {
      * @returns {*}
      */
     function compact(array) {
+        // filter会创建一个新的数组,为真的话，就会添加到数组中
         return filter.call(array, function (item) {
-            return item != null;
+            return item !== null || item !== undefined;
         })
     }
 
+    /**
+     * 类似得到一个数组的副本
+     * 但是如果传入的是一个空数组，会更改原来数组的值，不推荐使用
+     *
+     * flatten 数组扁平化
+     * 通过调用$.fn.concat处理类似[1,2,[3,4],5]的扁平化，变为[1,2,3,4,5]，
+     * 但是只能处理一层的数组嵌套，
+     * 不能处理类似[1,[2,3,[4,55[6,7]]]]这种多层数组嵌套的情况。
+     *
+     *
+     * @param array
+     * @returns {*}
+     */
     function flatten(array) {
         return array.length > 0 ? $.fn.concat.apply([], array) : array
     }
 
+    /**
+     * camelize 将使用连字符-的属性转换为驼峰式写法
+     * 第一个参数是个正则表达式：匹配一个或多个-以及连字符后面的一个字母，
+     * 并将字母转换大写。
+     * @param str
+     */
     camelize = function (str) {
         return str.replace(/-+(.)?/g, function (match, chr) {
             return chr ? chr.toUpperCase() : ''

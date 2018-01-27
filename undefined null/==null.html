@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>==null</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    console.log("'' == undefined  ==>", '' == undefined); // false
+    console.log("'' == []  ==>", '' == []); // true
+    console.log("'' == {}  ==>", '' == {}); // false
+    console.log("'' == 0  ==>", '' == 0); // true
+    console.log("'' == null  ==>", '' == null); // false
+    console.log("false == null  ==>", false == null); // false
+
+</script>
+<script>
+    console.group('undefined== null 只有undefined == null 才为真');
+
+    console.log(" undefined == null  ==>", undefined == null); // true
+    console.log(" undefined === null  ==>", undefined === null); // false
+    console.log(" null === null  ==>", null === null); // true
+    console.log(" undefined === undefined  ==>", undefined === undefined); // true
+
+    console.groupEnd();
+</script>
+</body>
+
+</html>
