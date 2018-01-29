@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>requestAnimationFrame</title>
+    <style>
+        body {
+            background: #000;
+            color: deeppink;
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 18px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //    window.requestAnimationFrame() 方法告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用。
+    //注意：若您想要在下次重绘时产生另一个动画画面，您的回调例程必须调用 requestAnimationFrame()。
+    //当你准备好更新屏幕画面时你就应用此方法。这会要求你的动画函数在浏览器下次重绘前执行。回调的次数常是每秒60次，但大多数浏览器通常匹配 W3C 所建议的刷新率。如果网页于后台或隐藏在 <iframe> 里面，重绘频率可能会大大降低以提升性能和电池耐久度。
+    //
+    //回调函数只会被传入一个参数，DOMHighResTimeStamp，指示当前被 requestAnimationFrame 序列化的函数队列被触发的时间。即使经过了许多对之前回调的计算工作时间，单个帧中的多个回调也都将被传入相同的时间戳。此数值是一个十进制数，单位毫秒，最小精度为1ms(1000μs)。
+</script>
+<script>
+    //    语法
+    //    window.requestAnimationFrame(callback);
+
+    //    参数
+    //    callback
+    //    一个在每次需要重新绘制动画时调用的包含指定函数的参数。这个回调函数有一个传参，DOMHighResTimeStamp，指示从触发 requestAnimationFrame 回调到现在（重新渲染页面内容之前）的时间（从 performance.now() 取得）。
+    //返回值
+    //    一个 long 整数，请求 ID ，也是回调列表中唯一的标识。这是一个非零值，但你恐怕也不能从其值中作出什么臆想。你可以传此值到 window.cancelAnimationFrame() 以取消回调函数。
+</script>
+<div id="SomeElementYouWantToAnimate">SomeElementYouWantToAnimate</div>
+<script>
+    var start = null;
+    var element = document.getElementById('SomeElementYouWantToAnimate');
+    element.style.position = 'absolute';
+
+    function step(timestamp) {
+        // timestamp 是一个毫秒数 ，每隔10几个毫秒就会执行
+        console.log(timestamp, start);
+        
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+
+
+        element.style.left = Math.min(progress / 10, 200) + 'px';
+        if (progress < 2000) {
+            window.requestAnimationFrame(step);
+        }
+    }
+
+    window.requestAnimationFrame(step);
+</script>
+</body>
+</html>
